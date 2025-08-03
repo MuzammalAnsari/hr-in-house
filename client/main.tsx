@@ -1,7 +1,7 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
+import { createRoot, Root } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -9,7 +9,7 @@ import App from "./App";
 
 const queryClient = new QueryClient();
 
-const Root = () => (
+const AppRoot = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -19,12 +19,16 @@ const Root = () => (
   </QueryClientProvider>
 );
 
-// Prevent duplicate root creation in development
+// Prevent duplicate root creation
 const container = document.getElementById("root")!;
-if (!container._reactRootContainer) {
-  const root = createRoot(container);
-  container._reactRootContainer = root;
-  root.render(<Root />);
+let root: Root;
+
+// Check if we already have a root attached to avoid duplicate creation
+if (!(container as any)._reactRoot) {
+  root = createRoot(container);
+  (container as any)._reactRoot = root;
 } else {
-  container._reactRootContainer.render(<Root />);
+  root = (container as any)._reactRoot;
 }
+
+root.render(<AppRoot />);
