@@ -19,4 +19,12 @@ const Root = () => (
   </QueryClientProvider>
 );
 
-createRoot(document.getElementById("root")!).render(<Root />);
+// Prevent duplicate root creation in development
+const container = document.getElementById("root")!;
+if (!container._reactRootContainer) {
+  const root = createRoot(container);
+  container._reactRootContainer = root;
+  root.render(<Root />);
+} else {
+  container._reactRootContainer.render(<Root />);
+}
