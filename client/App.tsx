@@ -6,7 +6,7 @@ import Attendance from "./pages/Attendance";
 import Leave from "./pages/Leave";
 import Payroll from "./pages/Payroll";
 import Reports from "./pages/Reports";
-import Settings from "./pages/Settings";
+
 import NotFound from "./pages/NotFound";
 
 export default function App() {
