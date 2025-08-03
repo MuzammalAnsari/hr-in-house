@@ -1,8 +1,8 @@
-import PlaceholderPage from './PlaceholderPage';
+import PlaceholderPage from "./PlaceholderPage";
 
 export default function Payroll() {
   return (
-    <PlaceholderPage 
+    <PlaceholderPage
       title="Payroll Management"
       description="Manage salary structures, generate payslips, track payments, and handle payroll processing with tax calculations."
     />

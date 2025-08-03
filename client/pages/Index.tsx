@@ -1,36 +1,45 @@
-import { Users, Clock, Calendar, TrendingUp, UserCheck, UserX, CheckCircle, XCircle } from 'lucide-react';
+import {
+  Users,
+  Clock,
+  Calendar,
+  TrendingUp,
+  UserCheck,
+  UserX,
+  CheckCircle,
+  XCircle,
+} from "lucide-react";
 
 const stats = [
   {
     id: 1,
-    name: 'Total Employees',
-    value: '247',
-    change: '+4.75%',
-    changeType: 'positive',
+    name: "Total Employees",
+    value: "247",
+    change: "+4.75%",
+    changeType: "positive",
     icon: Users,
   },
   {
     id: 2,
-    name: 'Present Today',
-    value: '231',
-    change: '93.5%',
-    changeType: 'positive',
+    name: "Present Today",
+    value: "231",
+    change: "93.5%",
+    changeType: "positive",
     icon: UserCheck,
   },
   {
     id: 3,
-    name: 'On Leave',
-    value: '12',
-    change: '+2',
-    changeType: 'neutral',
+    name: "On Leave",
+    value: "12",
+    change: "+2",
+    changeType: "neutral",
     icon: Calendar,
   },
   {
     id: 4,
-    name: 'Pending Approvals',
-    value: '8',
-    change: '-3',
-    changeType: 'positive',
+    name: "Pending Approvals",
+    value: "8",
+    change: "-3",
+    changeType: "positive",
     icon: Clock,
   },
 ];
@@ -38,58 +47,58 @@ const stats = [
 const recentActivities = [
   {
     id: 1,
-    type: 'leave_request',
-    user: 'Sarah Johnson',
-    action: 'submitted a leave request',
-    time: '2 hours ago',
-    status: 'pending',
+    type: "leave_request",
+    user: "Sarah Johnson",
+    action: "submitted a leave request",
+    time: "2 hours ago",
+    status: "pending",
   },
   {
     id: 2,
-    type: 'employee_joined',
-    user: 'Michael Chen',
-    action: 'joined the Development team',
-    time: '1 day ago',
-    status: 'completed',
+    type: "employee_joined",
+    user: "Michael Chen",
+    action: "joined the Development team",
+    time: "1 day ago",
+    status: "completed",
   },
   {
     id: 3,
-    type: 'leave_approved',
-    user: 'Emily Davis',
-    action: 'leave request approved',
-    time: '2 days ago',
-    status: 'approved',
+    type: "leave_approved",
+    user: "Emily Davis",
+    action: "leave request approved",
+    time: "2 days ago",
+    status: "approved",
   },
   {
     id: 4,
-    type: 'attendance',
-    user: 'David Wilson',
-    action: 'marked late arrival',
-    time: '3 days ago',
-    status: 'noted',
+    type: "attendance",
+    user: "David Wilson",
+    action: "marked late arrival",
+    time: "3 days ago",
+    status: "noted",
   },
 ];
 
 const upcomingEvents = [
   {
     id: 1,
-    title: 'Team Building Workshop',
-    date: 'March 15, 2024',
-    time: '10:00 AM',
+    title: "Team Building Workshop",
+    date: "March 15, 2024",
+    time: "10:00 AM",
     participants: 45,
   },
   {
     id: 2,
-    title: 'Performance Review Deadline',
-    date: 'March 20, 2024',
-    time: '5:00 PM',
+    title: "Performance Review Deadline",
+    date: "March 20, 2024",
+    time: "5:00 PM",
     participants: 12,
   },
   {
     id: 3,
-    title: 'New Employee Orientation',
-    date: 'March 22, 2024',
-    time: '9:00 AM',
+    title: "New Employee Orientation",
+    date: "March 22, 2024",
+    time: "9:00 AM",
     participants: 6,
   },
 ];
@@ -133,11 +142,11 @@ export default function Index() {
                           </div>
                           <div
                             className={`ml-2 flex items-baseline text-sm font-semibold ${
-                              item.changeType === 'positive'
-                                ? 'text-green-600'
-                                : item.changeType === 'negative'
-                                ? 'text-red-600'
-                                : 'text-gray-500'
+                              item.changeType === "positive"
+                                ? "text-green-600"
+                                : item.changeType === "negative"
+                                  ? "text-red-600"
+                                  : "text-gray-500"
                             }`}
                           >
                             {item.change}
@@ -176,16 +185,18 @@ export default function Index() {
                             <div>
                               <span
                                 className={`h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white ${
-                                  activity.status === 'completed' || activity.status === 'approved'
-                                    ? 'bg-green-500'
-                                    : activity.status === 'pending'
-                                    ? 'bg-yellow-500'
-                                    : 'bg-gray-500'
+                                  activity.status === "completed" ||
+                                  activity.status === "approved"
+                                    ? "bg-green-500"
+                                    : activity.status === "pending"
+                                      ? "bg-yellow-500"
+                                      : "bg-gray-500"
                                 }`}
                               >
-                                {activity.status === 'completed' || activity.status === 'approved' ? (
+                                {activity.status === "completed" ||
+                                activity.status === "approved" ? (
                                   <CheckCircle className="h-5 w-5 text-white" />
-                                ) : activity.status === 'pending' ? (
+                                ) : activity.status === "pending" ? (
                                   <Clock className="h-5 w-5 text-white" />
                                 ) : (
                                   <XCircle className="h-5 w-5 text-white" />
@@ -197,7 +208,7 @@ export default function Index() {
                                 <p className="text-sm text-gray-500">
                                   <span className="font-medium text-gray-900">
                                     {activity.user}
-                                  </span>{' '}
+                                  </span>{" "}
                                   {activity.action}
                                 </p>
                               </div>
