@@ -109,7 +109,9 @@ export default function EmployeeDashboard() {
               </div>
               <div className="text-right">
                 <div className="text-sm text-blue-100">Employee ID</div>
-                <div className="text-xl font-bold">{employeeData.employeeId}</div>
+                <div className="text-xl font-bold">
+                  {employeeData.employeeId}
+                </div>
               </div>
             </div>
           </div>
@@ -117,7 +119,9 @@ export default function EmployeeDashboard() {
 
         {/* Today's Status */}
         <div className="mb-8">
-          <h2 className="text-lg font-medium text-gray-900 mb-4">Today's Status</h2>
+          <h2 className="text-lg font-medium text-gray-900 mb-4">
+            Today's Status
+          </h2>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
             <div className="bg-white overflow-hidden shadow border border-gray-200 rounded-lg">
               <div className="p-5">
@@ -127,13 +131,19 @@ export default function EmployeeDashboard() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Check In</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Check In
+                      </dt>
                       <dd className="flex items-baseline">
-                        <div className={`text-lg font-medium ${todayStats.isLate ? 'text-red-600' : 'text-gray-900'}`}>
+                        <div
+                          className={`text-lg font-medium ${todayStats.isLate ? "text-red-600" : "text-gray-900"}`}
+                        >
                           {todayStats.checkIn}
                         </div>
                         {todayStats.isLate && (
-                          <span className="ml-2 text-xs text-red-500 font-medium">Late</span>
+                          <span className="ml-2 text-xs text-red-500 font-medium">
+                            Late
+                          </span>
                         )}
                       </dd>
                     </dl>
@@ -150,7 +160,9 @@ export default function EmployeeDashboard() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Working Hours</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Working Hours
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         {todayStats.workingHours}
                       </dd>
@@ -168,7 +180,9 @@ export default function EmployeeDashboard() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Status</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Status
+                      </dt>
                       <dd className="text-lg font-medium text-green-600">
                         {todayStats.status}
                       </dd>
@@ -186,7 +200,9 @@ export default function EmployeeDashboard() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Leaves Remaining</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Leaves Remaining
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         {leaveBalance.annual.remaining} days
                       </dd>
@@ -205,14 +221,20 @@ export default function EmployeeDashboard() {
             {/* Leave Balance */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">My Leave Balance</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  My Leave Balance
+                </h3>
                 <div className="space-y-4">
                   <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
                     <div className="flex items-center">
                       <Calendar className="h-5 w-5 text-blue-600 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-blue-900">Annual Leave</div>
-                        <div className="text-xs text-blue-700">Used: {leaveBalance.annual.used} days</div>
+                        <div className="text-sm font-medium text-blue-900">
+                          Annual Leave
+                        </div>
+                        <div className="text-xs text-blue-700">
+                          Used: {leaveBalance.annual.used} days
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -227,8 +249,12 @@ export default function EmployeeDashboard() {
                     <div className="flex items-center">
                       <Calendar className="h-5 w-5 text-red-600 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-red-900">Sick Leave</div>
-                        <div className="text-xs text-red-700">Used: {leaveBalance.sick.used} days</div>
+                        <div className="text-sm font-medium text-red-900">
+                          Sick Leave
+                        </div>
+                        <div className="text-xs text-red-700">
+                          Used: {leaveBalance.sick.used} days
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -243,8 +269,12 @@ export default function EmployeeDashboard() {
                     <div className="flex items-center">
                       <Calendar className="h-5 w-5 text-green-600 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-green-900">Casual Leave</div>
-                        <div className="text-xs text-green-700">Used: {leaveBalance.casual.used} days</div>
+                        <div className="text-sm font-medium text-green-900">
+                          Casual Leave
+                        </div>
+                        <div className="text-xs text-green-700">
+                          Used: {leaveBalance.casual.used} days
+                        </div>
                       </div>
                     </div>
                     <div className="text-right">
@@ -261,21 +291,25 @@ export default function EmployeeDashboard() {
             {/* Quick Actions */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Quick Actions
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <button className="flex flex-col items-center p-4 border-2 border-dashed border-blue-300 rounded-lg hover:border-blue-400 transition-colors text-blue-600 hover:text-blue-700">
                     <Calendar className="h-8 w-8 mb-2" />
                     <span className="text-sm font-medium">Apply for Leave</span>
                   </button>
-                  
+
                   <button className="flex flex-col items-center p-4 border-2 border-dashed border-green-300 rounded-lg hover:border-green-400 transition-colors text-green-600 hover:text-green-700">
                     <Clock className="h-8 w-8 mb-2" />
                     <span className="text-sm font-medium">Mark Attendance</span>
                   </button>
-                  
+
                   <button className="flex flex-col items-center p-4 border-2 border-dashed border-purple-300 rounded-lg hover:border-purple-400 transition-colors text-purple-600 hover:text-purple-700">
                     <FileText className="h-8 w-8 mb-2" />
-                    <span className="text-sm font-medium">Download Payslip</span>
+                    <span className="text-sm font-medium">
+                      Download Payslip
+                    </span>
                   </button>
                 </div>
               </div>
@@ -287,19 +321,36 @@ export default function EmployeeDashboard() {
             {/* Recent Activity */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Activity</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Recent Activity
+                </h3>
                 <div className="space-y-3">
                   {recentActivity.map((activity) => (
-                    <div key={activity.id} className="flex items-start space-x-3">
-                      <div className={`flex-shrink-0 w-2 h-2 rounded-full mt-2 ${
-                        activity.status === 'success' ? 'bg-green-500' :
-                        activity.status === 'warning' ? 'bg-yellow-500' :
-                        activity.status === 'info' ? 'bg-blue-500' : 'bg-gray-500'
-                      }`} />
+                    <div
+                      key={activity.id}
+                      className="flex items-start space-x-3"
+                    >
+                      <div
+                        className={`flex-shrink-0 w-2 h-2 rounded-full mt-2 ${
+                          activity.status === "success"
+                            ? "bg-green-500"
+                            : activity.status === "warning"
+                              ? "bg-yellow-500"
+                              : activity.status === "info"
+                                ? "bg-blue-500"
+                                : "bg-gray-500"
+                        }`}
+                      />
                       <div className="flex-1 min-w-0">
-                        <p className="text-sm font-medium text-gray-900">{activity.title}</p>
-                        <p className="text-sm text-gray-500">{activity.description}</p>
-                        <p className="text-xs text-gray-400 mt-1">{activity.time}</p>
+                        <p className="text-sm font-medium text-gray-900">
+                          {activity.title}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {activity.description}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">
+                          {activity.time}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -310,13 +361,20 @@ export default function EmployeeDashboard() {
             {/* Upcoming Events */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Upcoming Events</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Upcoming Events
+                </h3>
                 <div className="space-y-3">
                   {upcomingEvents.map((event) => (
-                    <div key={event.id} className="border-l-4 border-blue-400 bg-blue-50 p-3 rounded-r-lg">
+                    <div
+                      key={event.id}
+                      className="border-l-4 border-blue-400 bg-blue-50 p-3 rounded-r-lg"
+                    >
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm font-medium text-blue-900">{event.title}</p>
+                          <p className="text-sm font-medium text-blue-900">
+                            {event.title}
+                          </p>
                           <p className="text-xs text-blue-700">{event.type}</p>
                         </div>
                         <div className="text-right">
@@ -333,31 +391,45 @@ export default function EmployeeDashboard() {
             {/* My Profile Summary */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">My Profile</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  My Profile
+                </h3>
                 <div className="space-y-3">
                   <div className="flex items-center">
                     <Building className="h-4 w-4 text-gray-400 mr-3" />
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{employeeData.designation}</div>
-                      <div className="text-xs text-gray-500">{employeeData.department}</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        {employeeData.designation}
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {employeeData.department}
+                      </div>
                     </div>
                   </div>
-                  
+
                   <div className="flex items-center">
                     <Mail className="h-4 w-4 text-gray-400 mr-3" />
-                    <div className="text-sm text-gray-900">{employeeData.email}</div>
+                    <div className="text-sm text-gray-900">
+                      {employeeData.email}
+                    </div>
                   </div>
-                  
+
                   <div className="flex items-center">
                     <MapPin className="h-4 w-4 text-gray-400 mr-3" />
-                    <div className="text-sm text-gray-900">{employeeData.location}</div>
+                    <div className="text-sm text-gray-900">
+                      {employeeData.location}
+                    </div>
                   </div>
-                  
+
                   <div className="flex items-center">
                     <Award className="h-4 w-4 text-gray-400 mr-3" />
                     <div>
-                      <div className="text-sm font-medium text-gray-900">Manager</div>
-                      <div className="text-xs text-gray-500">{employeeData.manager}</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        Manager
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        {employeeData.manager}
+                      </div>
                     </div>
                   </div>
                 </div>

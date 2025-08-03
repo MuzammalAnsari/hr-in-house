@@ -46,17 +46,58 @@ const profileData = {
     },
   },
   documents: [
-    { id: 1, name: "CNIC Copy", type: "pdf", uploadDate: "2023-01-15", status: "Verified" },
-    { id: 2, name: "Employment Contract", type: "pdf", uploadDate: "2023-01-15", status: "Verified" },
-    { id: 3, name: "Offer Letter", type: "pdf", uploadDate: "2023-01-10", status: "Verified" },
-    { id: 4, name: "Academic Certificates", type: "pdf", uploadDate: "2023-01-12", status: "Pending" },
+    {
+      id: 1,
+      name: "CNIC Copy",
+      type: "pdf",
+      uploadDate: "2023-01-15",
+      status: "Verified",
+    },
+    {
+      id: 2,
+      name: "Employment Contract",
+      type: "pdf",
+      uploadDate: "2023-01-15",
+      status: "Verified",
+    },
+    {
+      id: 3,
+      name: "Offer Letter",
+      type: "pdf",
+      uploadDate: "2023-01-10",
+      status: "Verified",
+    },
+    {
+      id: 4,
+      name: "Academic Certificates",
+      type: "pdf",
+      uploadDate: "2023-01-12",
+      status: "Pending",
+    },
   ],
   skills: [
-    "React", "JavaScript", "Node.js", "Python", "AWS", "Docker", "Git", "MongoDB"
+    "React",
+    "JavaScript",
+    "Node.js",
+    "Python",
+    "AWS",
+    "Docker",
+    "Git",
+    "MongoDB",
   ],
   certifications: [
-    { name: "AWS Certified Developer", issuer: "Amazon Web Services", date: "2023-06-15", expiry: "2026-06-15" },
-    { name: "React Professional Certificate", issuer: "Meta", date: "2023-03-20", expiry: null },
+    {
+      name: "AWS Certified Developer",
+      issuer: "Amazon Web Services",
+      date: "2023-06-15",
+      expiry: "2026-06-15",
+    },
+    {
+      name: "React Professional Certificate",
+      issuer: "Meta",
+      date: "2023-03-20",
+      expiry: null,
+    },
   ],
 };
 
@@ -84,7 +125,10 @@ export default function EmployeeProfile() {
                   <div className="relative">
                     <div className="h-20 w-20 rounded-full bg-blue-100 flex items-center justify-center">
                       <span className="text-2xl font-bold text-blue-600">
-                        {profileData.personal.name.split(' ').map(n => n[0]).join('')}
+                        {profileData.personal.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
                       </span>
                     </div>
                     <button className="absolute bottom-0 right-0 bg-blue-600 rounded-full p-1 text-white hover:bg-blue-700">
@@ -92,10 +136,15 @@ export default function EmployeeProfile() {
                     </button>
                   </div>
                   <div className="ml-6">
-                    <h1 className="text-2xl font-bold text-gray-900">{profileData.personal.name}</h1>
-                    <p className="text-sm text-gray-600">{profileData.professional.designation}</p>
+                    <h1 className="text-2xl font-bold text-gray-900">
+                      {profileData.personal.name}
+                    </h1>
+                    <p className="text-sm text-gray-600">
+                      {profileData.professional.designation}
+                    </p>
                     <p className="text-sm text-gray-500">
-                      {profileData.personal.employeeId} • {profileData.professional.department}
+                      {profileData.personal.employeeId} •{" "}
+                      {profileData.professional.department}
                     </p>
                   </div>
                 </div>
@@ -140,12 +189,16 @@ export default function EmployeeProfile() {
         {selectedTab === "personal" && (
           <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
-              <h3 className="text-lg font-medium text-gray-900">Personal Information</h3>
+              <h3 className="text-lg font-medium text-gray-900">
+                Personal Information
+              </h3>
             </div>
             <div className="p-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Full Name</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Full Name
+                  </label>
                   {editMode ? (
                     <input
                       type="text"
@@ -153,17 +206,25 @@ export default function EmployeeProfile() {
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     />
                   ) : (
-                    <p className="mt-1 text-sm text-gray-900">{profileData.personal.name}</p>
+                    <p className="mt-1 text-sm text-gray-900">
+                      {profileData.personal.name}
+                    </p>
                   )}
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Employee ID</label>
-                  <p className="mt-1 text-sm text-gray-900">{profileData.personal.employeeId}</p>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Employee ID
+                  </label>
+                  <p className="mt-1 text-sm text-gray-900">
+                    {profileData.personal.employeeId}
+                  </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Email Address</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Email Address
+                  </label>
                   <div className="mt-1 flex items-center">
                     <Mail className="h-4 w-4 text-gray-400 mr-2" />
                     {editMode ? (
@@ -173,13 +234,17 @@ export default function EmployeeProfile() {
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <span className="text-sm text-gray-900">{profileData.personal.email}</span>
+                      <span className="text-sm text-gray-900">
+                        {profileData.personal.email}
+                      </span>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Phone Number</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Phone Number
+                  </label>
                   <div className="mt-1 flex items-center">
                     <Phone className="h-4 w-4 text-gray-400 mr-2" />
                     {editMode ? (
@@ -189,13 +254,17 @@ export default function EmployeeProfile() {
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <span className="text-sm text-gray-900">{profileData.personal.phone}</span>
+                      <span className="text-sm text-gray-900">
+                        {profileData.personal.phone}
+                      </span>
                     )}
                   </div>
                 </div>
 
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-gray-700">Address</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Address
+                  </label>
                   <div className="mt-1 flex items-start">
                     <MapPin className="h-4 w-4 text-gray-400 mr-2 mt-0.5" />
                     {editMode ? (
@@ -205,13 +274,17 @@ export default function EmployeeProfile() {
                         className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <span className="text-sm text-gray-900">{profileData.personal.address}</span>
+                      <span className="text-sm text-gray-900">
+                        {profileData.personal.address}
+                      </span>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Date of Birth</label>
+                  <label className="block text-sm font-medium text-gray-700">
+                    Date of Birth
+                  </label>
                   {editMode ? (
                     <input
                       type="date"
@@ -220,51 +293,73 @@ export default function EmployeeProfile() {
                     />
                   ) : (
                     <p className="mt-1 text-sm text-gray-900">
-                      {new Date(profileData.personal.dateOfBirth).toLocaleDateString()}
+                      {new Date(
+                        profileData.personal.dateOfBirth,
+                      ).toLocaleDateString()}
                     </p>
                   )}
                 </div>
               </div>
 
               <div className="mt-8">
-                <h4 className="text-md font-medium text-gray-900 mb-4">Emergency Contact</h4>
+                <h4 className="text-md font-medium text-gray-900 mb-4">
+                  Emergency Contact
+                </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Name
+                    </label>
                     {editMode ? (
                       <input
                         type="text"
-                        defaultValue={profileData.personal.emergencyContact.name}
+                        defaultValue={
+                          profileData.personal.emergencyContact.name
+                        }
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <p className="mt-1 text-sm text-gray-900">{profileData.personal.emergencyContact.name}</p>
+                      <p className="mt-1 text-sm text-gray-900">
+                        {profileData.personal.emergencyContact.name}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Relationship</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Relationship
+                    </label>
                     {editMode ? (
                       <input
                         type="text"
-                        defaultValue={profileData.personal.emergencyContact.relationship}
+                        defaultValue={
+                          profileData.personal.emergencyContact.relationship
+                        }
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <p className="mt-1 text-sm text-gray-900">{profileData.personal.emergencyContact.relationship}</p>
+                      <p className="mt-1 text-sm text-gray-900">
+                        {profileData.personal.emergencyContact.relationship}
+                      </p>
                     )}
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Phone</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Phone
+                    </label>
                     {editMode ? (
                       <input
                         type="tel"
-                        defaultValue={profileData.personal.emergencyContact.phone}
+                        defaultValue={
+                          profileData.personal.emergencyContact.phone
+                        }
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     ) : (
-                      <p className="mt-1 text-sm text-gray-900">{profileData.personal.emergencyContact.phone}</p>
+                      <p className="mt-1 text-sm text-gray-900">
+                        {profileData.personal.emergencyContact.phone}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -293,56 +388,84 @@ export default function EmployeeProfile() {
             {/* Work Information */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">Work Information</h3>
+                <h3 className="text-lg font-medium text-gray-900">
+                  Work Information
+                </h3>
               </div>
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Department</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Department
+                    </label>
                     <div className="mt-1 flex items-center">
                       <Building className="h-4 w-4 text-gray-400 mr-2" />
-                      <span className="text-sm text-gray-900">{profileData.professional.department}</span>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Designation</label>
-                    <p className="mt-1 text-sm text-gray-900">{profileData.professional.designation}</p>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700">Joining Date</label>
-                    <div className="mt-1 flex items-center">
-                      <Calendar className="h-4 w-4 text-gray-400 mr-2" />
                       <span className="text-sm text-gray-900">
-                        {new Date(profileData.professional.joiningDate).toLocaleDateString()}
+                        {profileData.professional.department}
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Employee Type</label>
-                    <p className="mt-1 text-sm text-gray-900">{profileData.professional.employeeType}</p>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Designation
+                    </label>
+                    <p className="mt-1 text-sm text-gray-900">
+                      {profileData.professional.designation}
+                    </p>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Work Location</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Joining Date
+                    </label>
+                    <div className="mt-1 flex items-center">
+                      <Calendar className="h-4 w-4 text-gray-400 mr-2" />
+                      <span className="text-sm text-gray-900">
+                        {new Date(
+                          profileData.professional.joiningDate,
+                        ).toLocaleDateString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Employee Type
+                    </label>
+                    <p className="mt-1 text-sm text-gray-900">
+                      {profileData.professional.employeeType}
+                    </p>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Work Location
+                    </label>
                     <div className="mt-1 flex items-center">
                       <MapPin className="h-4 w-4 text-gray-400 mr-2" />
-                      <span className="text-sm text-gray-900">{profileData.professional.workLocation}</span>
+                      <span className="text-sm text-gray-900">
+                        {profileData.professional.workLocation}
+                      </span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Reporting Manager</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Reporting Manager
+                    </label>
                     <div className="mt-1 flex items-center">
                       <User className="h-4 w-4 text-gray-400 mr-2" />
-                      <span className="text-sm text-gray-900">{profileData.professional.manager}</span>
+                      <span className="text-sm text-gray-900">
+                        {profileData.professional.manager}
+                      </span>
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700">Probation Status</label>
+                    <label className="block text-sm font-medium text-gray-700">
+                      Probation Status
+                    </label>
                     <span className="mt-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">
                       {profileData.professional.probationStatus}
                     </span>
@@ -373,22 +496,32 @@ export default function EmployeeProfile() {
 
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-6 py-4 border-b border-gray-200">
-                  <h3 className="text-lg font-medium text-gray-900">Certifications</h3>
+                  <h3 className="text-lg font-medium text-gray-900">
+                    Certifications
+                  </h3>
                 </div>
                 <div className="p-6">
                   <div className="space-y-4">
                     {profileData.certifications.map((cert, index) => (
-                      <div key={index} className="border-l-4 border-green-400 bg-green-50 p-3 rounded-r-lg">
+                      <div
+                        key={index}
+                        className="border-l-4 border-green-400 bg-green-50 p-3 rounded-r-lg"
+                      >
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="text-sm font-medium text-green-900">{cert.name}</p>
-                            <p className="text-xs text-green-700">{cert.issuer}</p>
+                            <p className="text-sm font-medium text-green-900">
+                              {cert.name}
+                            </p>
+                            <p className="text-xs text-green-700">
+                              {cert.issuer}
+                            </p>
                           </div>
                           <Award className="h-5 w-5 text-green-600" />
                         </div>
                         <p className="text-xs text-green-600 mt-1">
                           Issued: {new Date(cert.date).toLocaleDateString()}
-                          {cert.expiry && ` • Expires: ${new Date(cert.expiry).toLocaleDateString()}`}
+                          {cert.expiry &&
+                            ` • Expires: ${new Date(cert.expiry).toLocaleDateString()}`}
                         </p>
                       </div>
                     ))}
@@ -404,7 +537,9 @@ export default function EmployeeProfile() {
           <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-medium text-gray-900">My Documents</h3>
+                <h3 className="text-lg font-medium text-gray-900">
+                  My Documents
+                </h3>
                 <button className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
                   <Upload className="h-4 w-4 mr-2" />
                   Upload Document
@@ -437,8 +572,12 @@ export default function EmployeeProfile() {
                           <div className="flex items-center">
                             <FileText className="h-5 w-5 text-gray-400 mr-3" />
                             <div>
-                              <div className="text-sm font-medium text-gray-900">{doc.name}</div>
-                              <div className="text-sm text-gray-500">{doc.type.toUpperCase()}</div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {doc.name}
+                              </div>
+                              <div className="text-sm text-gray-500">
+                                {doc.type.toUpperCase()}
+                              </div>
                             </div>
                           </div>
                         </td>
@@ -446,11 +585,13 @@ export default function EmployeeProfile() {
                           {new Date(doc.uploadDate).toLocaleDateString()}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                            doc.status === "Verified"
-                              ? "bg-green-100 text-green-800"
-                              : "bg-yellow-100 text-yellow-800"
-                          }`}>
+                          <span
+                            className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                              doc.status === "Verified"
+                                ? "bg-green-100 text-green-800"
+                                : "bg-yellow-100 text-yellow-800"
+                            }`}
+                          >
                             {doc.status}
                           </span>
                         </td>
@@ -473,7 +614,9 @@ export default function EmployeeProfile() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-6 py-4 border-b border-gray-200">
-                <h3 className="text-lg font-medium text-gray-900">Security Settings</h3>
+                <h3 className="text-lg font-medium text-gray-900">
+                  Security Settings
+                </h3>
               </div>
               <div className="p-6">
                 <div className="space-y-6">
@@ -481,8 +624,12 @@ export default function EmployeeProfile() {
                     <div className="flex items-center">
                       <Key className="h-5 w-5 text-gray-400 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Password</div>
-                        <div className="text-sm text-gray-500">Last changed 30 days ago</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Password
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          Last changed 30 days ago
+                        </div>
                       </div>
                     </div>
                     <button
@@ -497,8 +644,12 @@ export default function EmployeeProfile() {
                     <div className="flex items-center">
                       <Shield className="h-5 w-5 text-gray-400 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Two-Factor Authentication</div>
-                        <div className="text-sm text-gray-500">Add an extra layer of security</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Two-Factor Authentication
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          Add an extra layer of security
+                        </div>
                       </div>
                     </div>
                     <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
@@ -510,11 +661,20 @@ export default function EmployeeProfile() {
                     <div className="flex">
                       <Shield className="h-5 w-5 text-yellow-400 mt-0.5 mr-3" />
                       <div>
-                        <h4 className="text-sm font-medium text-yellow-800">Security Recommendations</h4>
+                        <h4 className="text-sm font-medium text-yellow-800">
+                          Security Recommendations
+                        </h4>
                         <ul className="mt-2 text-sm text-yellow-700 space-y-1">
-                          <li>• Use a strong password with at least 8 characters</li>
-                          <li>• Enable two-factor authentication for better security</li>
-                          <li>• Never share your login credentials with anyone</li>
+                          <li>
+                            • Use a strong password with at least 8 characters
+                          </li>
+                          <li>
+                            • Enable two-factor authentication for better
+                            security
+                          </li>
+                          <li>
+                            • Never share your login credentials with anyone
+                          </li>
                           <li>• Log out when using shared computers</li>
                         </ul>
                       </div>
@@ -530,9 +690,11 @@ export default function EmployeeProfile() {
         {showPasswordForm && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowPasswordForm(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowPasswordForm(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -543,8 +705,7 @@ export default function EmployeeProfile() {
                       onClick={() => setShowPasswordForm(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>

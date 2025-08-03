@@ -98,7 +98,14 @@ const employees = [
   },
 ];
 
-const departments = ["All", "Engineering", "Design", "Marketing", "HR", "Sales"];
+const departments = [
+  "All",
+  "Engineering",
+  "Design",
+  "Marketing",
+  "HR",
+  "Sales",
+];
 const statuses = ["All", "Active", "Inactive", "On Leave"];
 const probationStatuses = ["All", "On Probation", "Confirmed"];
 
@@ -112,14 +119,22 @@ export default function Employees() {
   const [showAddForm, setShowAddForm] = useState(false);
 
   const filteredEmployees = employees.filter((employee) => {
-    const matchesSearch = employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         employee.employeeId.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         employee.email.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment = selectedDepartment === "All" || employee.department === selectedDepartment;
-    const matchesStatus = selectedStatus === "All" || employee.status === selectedStatus;
-    const matchesProbation = selectedProbation === "All" || employee.probationStatus === selectedProbation;
-    
-    return matchesSearch && matchesDepartment && matchesStatus && matchesProbation;
+    const matchesSearch =
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.employeeId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDepartment =
+      selectedDepartment === "All" ||
+      employee.department === selectedDepartment;
+    const matchesStatus =
+      selectedStatus === "All" || employee.status === selectedStatus;
+    const matchesProbation =
+      selectedProbation === "All" ||
+      employee.probationStatus === selectedProbation;
+
+    return (
+      matchesSearch && matchesDepartment && matchesStatus && matchesProbation
+    );
   });
 
   const tabs = [
@@ -138,7 +153,8 @@ export default function Employees() {
                 Employee Management
               </h1>
               <p className="mt-1 text-sm text-gray-500">
-                Manage employee profiles, documents, and organizational structure
+                Manage employee profiles, documents, and organizational
+                structure
               </p>
             </div>
             <div className="flex space-x-3">
@@ -260,7 +276,10 @@ export default function Employees() {
                           <div className="h-10 w-10 flex-shrink-0">
                             <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                               <span className="text-sm font-medium text-blue-600">
-                                {employee.name.split(' ').map(n => n[0]).join('')}
+                                {employee.name
+                                  .split(" ")
+                                  .map((n) => n[0])
+                                  .join("")}
                               </span>
                             </div>
                           </div>
@@ -277,7 +296,9 @@ export default function Employees() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <Building className="h-4 w-4 text-gray-400 mr-2" />
-                          <span className="text-sm text-gray-900">{employee.department}</span>
+                          <span className="text-sm text-gray-900">
+                            {employee.department}
+                          </span>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -289,28 +310,34 @@ export default function Employees() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="flex items-center">
                           <Calendar className="h-4 w-4 text-gray-400 mr-2" />
-                          <span className="text-sm text-gray-900">{employee.joiningDate}</span>
+                          <span className="text-sm text-gray-900">
+                            {employee.joiningDate}
+                          </span>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={cn(
-                          "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                          employee.status === "Active"
-                            ? "bg-green-100 text-green-800"
-                            : employee.status === "Inactive"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-yellow-100 text-yellow-800"
-                        )}>
+                        <span
+                          className={cn(
+                            "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                            employee.status === "Active"
+                              ? "bg-green-100 text-green-800"
+                              : employee.status === "Inactive"
+                                ? "bg-red-100 text-red-800"
+                                : "bg-yellow-100 text-yellow-800",
+                          )}
+                        >
                           {employee.status}
                         </span>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <span className={cn(
-                          "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                          employee.probationStatus === "Confirmed"
-                            ? "bg-green-100 text-green-800"
-                            : "bg-orange-100 text-orange-800"
-                        )}>
+                        <span
+                          className={cn(
+                            "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                            employee.probationStatus === "Confirmed"
+                              ? "bg-green-100 text-green-800"
+                              : "bg-orange-100 text-orange-800",
+                          )}
+                        >
                           {employee.probationStatus}
                         </span>
                       </td>
@@ -349,9 +376,11 @@ export default function Employees() {
         {selectedEmployee && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setSelectedEmployee(null)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setSelectedEmployee(null)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -362,8 +391,7 @@ export default function Employees() {
                       onClick={() => setSelectedEmployee(null)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -376,13 +404,22 @@ export default function Employees() {
                         <div className="flex items-center">
                           <div className="h-16 w-16 rounded-full bg-blue-100 flex items-center justify-center">
                             <span className="text-xl font-medium text-blue-600">
-                              {selectedEmployee.name.split(' ').map(n => n[0]).join('')}
+                              {selectedEmployee.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
                             </span>
                           </div>
                           <div className="ml-4">
-                            <h4 className="text-xl font-bold text-gray-900">{selectedEmployee.name}</h4>
-                            <p className="text-sm text-gray-500">{selectedEmployee.designation}</p>
-                            <p className="text-sm text-gray-500">{selectedEmployee.department}</p>
+                            <h4 className="text-xl font-bold text-gray-900">
+                              {selectedEmployee.name}
+                            </h4>
+                            <p className="text-sm text-gray-500">
+                              {selectedEmployee.designation}
+                            </p>
+                            <p className="text-sm text-gray-500">
+                              {selectedEmployee.department}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -390,60 +427,92 @@ export default function Employees() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Employee ID</label>
-                            <p className="mt-1 text-sm text-gray-900">{selectedEmployee.employeeId}</p>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Employee ID
+                            </label>
+                            <p className="mt-1 text-sm text-gray-900">
+                              {selectedEmployee.employeeId}
+                            </p>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Email</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Email
+                            </label>
                             <div className="mt-1 flex items-center">
                               <Mail className="h-4 w-4 text-gray-400 mr-2" />
-                              <p className="text-sm text-gray-900">{selectedEmployee.email}</p>
+                              <p className="text-sm text-gray-900">
+                                {selectedEmployee.email}
+                              </p>
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Phone</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Phone
+                            </label>
                             <div className="mt-1 flex items-center">
                               <Phone className="h-4 w-4 text-gray-400 mr-2" />
-                              <p className="text-sm text-gray-900">{selectedEmployee.phone}</p>
+                              <p className="text-sm text-gray-900">
+                                {selectedEmployee.phone}
+                              </p>
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Location</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Location
+                            </label>
                             <div className="mt-1 flex items-center">
                               <MapPin className="h-4 w-4 text-gray-400 mr-2" />
-                              <p className="text-sm text-gray-900">{selectedEmployee.location}</p>
+                              <p className="text-sm text-gray-900">
+                                {selectedEmployee.location}
+                              </p>
                             </div>
                           </div>
                         </div>
 
                         <div className="space-y-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Manager</label>
-                            <p className="mt-1 text-sm text-gray-900">{selectedEmployee.manager || "—"}</p>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Manager
+                            </label>
+                            <p className="mt-1 text-sm text-gray-900">
+                              {selectedEmployee.manager || "—"}
+                            </p>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Joining Date</label>
-                            <p className="mt-1 text-sm text-gray-900">{selectedEmployee.joiningDate}</p>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Joining Date
+                            </label>
+                            <p className="mt-1 text-sm text-gray-900">
+                              {selectedEmployee.joiningDate}
+                            </p>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Status</label>
-                            <span className={cn(
-                              "mt-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                              selectedEmployee.status === "Active"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-red-100 text-red-800"
-                            )}>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Status
+                            </label>
+                            <span
+                              className={cn(
+                                "mt-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                selectedEmployee.status === "Active"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-red-100 text-red-800",
+                              )}
+                            >
                               {selectedEmployee.status}
                             </span>
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Probation Status</label>
-                            <span className={cn(
-                              "mt-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                              selectedEmployee.probationStatus === "Confirmed"
-                                ? "bg-green-100 text-green-800"
-                                : "bg-orange-100 text-orange-800"
-                            )}>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Probation Status
+                            </label>
+                            <span
+                              className={cn(
+                                "mt-1 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                selectedEmployee.probationStatus === "Confirmed"
+                                  ? "bg-green-100 text-green-800"
+                                  : "bg-orange-100 text-orange-800",
+                              )}
+                            >
                               {selectedEmployee.probationStatus}
                             </span>
                           </div>
@@ -454,12 +523,16 @@ export default function Employees() {
                     {/* Documents & Actions */}
                     <div>
                       <div className="bg-white border border-gray-200 rounded-lg p-4">
-                        <h5 className="text-sm font-medium text-gray-900 mb-4">Documents</h5>
+                        <h5 className="text-sm font-medium text-gray-900 mb-4">
+                          Documents
+                        </h5>
                         <div className="space-y-3">
                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                             <div className="flex items-center">
                               <FileText className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">CNIC Copy</span>
+                              <span className="text-sm text-gray-900">
+                                CNIC Copy
+                              </span>
                             </div>
                             <button className="text-blue-600 hover:text-blue-700 text-sm">
                               View
@@ -468,7 +541,9 @@ export default function Employees() {
                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                             <div className="flex items-center">
                               <FileText className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">Contract</span>
+                              <span className="text-sm text-gray-900">
+                                Contract
+                              </span>
                             </div>
                             <button className="text-blue-600 hover:text-blue-700 text-sm">
                               View
@@ -477,7 +552,9 @@ export default function Employees() {
                           <div className="flex items-center justify-between p-3 bg-gray-50 rounded-md">
                             <div className="flex items-center">
                               <FileText className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">Offer Letter</span>
+                              <span className="text-sm text-gray-900">
+                                Offer Letter
+                              </span>
                             </div>
                             <button className="text-blue-600 hover:text-blue-700 text-sm">
                               View
@@ -513,9 +590,11 @@ export default function Employees() {
         {showAddForm && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowAddForm(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowAddForm(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -526,8 +605,7 @@ export default function Employees() {
                       onClick={() => setShowAddForm(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -659,11 +737,18 @@ export default function Employees() {
                           <div className="flex text-sm text-gray-600">
                             <label className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
                               <span>Upload files</span>
-                              <input type="file" className="sr-only" multiple accept=".pdf,.doc,.docx,.jpg,.png" />
+                              <input
+                                type="file"
+                                className="sr-only"
+                                multiple
+                                accept=".pdf,.doc,.docx,.jpg,.png"
+                              />
                             </label>
                             <p className="pl-1">or drag and drop</p>
                           </div>
-                          <p className="text-xs text-gray-500">PDF, DOC, JPG, PNG up to 10MB</p>
+                          <p className="text-xs text-gray-500">
+                            PDF, DOC, JPG, PNG up to 10MB
+                          </p>
                         </div>
                       </div>
                     </div>

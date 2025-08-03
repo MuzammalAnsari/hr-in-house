@@ -54,7 +54,9 @@ export function EmployeeLayout({ children }: EmployeeLayoutProps) {
           </div>
           <div className="flex flex-1 flex-col overflow-y-auto pt-5 pb-4">
             <div className="flex flex-shrink-0 items-center px-4">
-              <h1 className="text-xl font-bold text-gray-900">Employee Portal</h1>
+              <h1 className="text-xl font-bold text-gray-900">
+                Employee Portal
+              </h1>
             </div>
             <nav className="mt-5 flex-1 space-y-1 px-2">
               {navigation.map((item) => {
@@ -166,7 +168,9 @@ export function EmployeeLayout({ children }: EmployeeLayoutProps) {
                   className="-m-1.5 flex items-center p-1.5"
                 >
                   <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center">
-                    <span className="text-sm font-medium text-blue-600">SJ</span>
+                    <span className="text-sm font-medium text-blue-600">
+                      SJ
+                    </span>
                   </div>
                   <span className="hidden lg:flex lg:items-center">
                     <span className="ml-4 text-sm font-semibold leading-6 text-gray-900">

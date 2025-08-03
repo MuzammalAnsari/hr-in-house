@@ -112,9 +112,24 @@ const employees = [
 ];
 
 const payrollPeriods = [
-  { period: "January 2024", status: "Completed", employees: 247, totalAmount: 2847500 },
-  { period: "December 2023", status: "Completed", employees: 245, totalAmount: 2789300 },
-  { period: "November 2023", status: "Completed", employees: 243, totalAmount: 2751200 },
+  {
+    period: "January 2024",
+    status: "Completed",
+    employees: 247,
+    totalAmount: 2847500,
+  },
+  {
+    period: "December 2023",
+    status: "Completed",
+    employees: 245,
+    totalAmount: 2789300,
+  },
+  {
+    period: "November 2023",
+    status: "Completed",
+    employees: 243,
+    totalAmount: 2751200,
+  },
 ];
 
 const salaryComponents = [
@@ -133,11 +148,15 @@ export default function Payroll() {
   const [showPayslipModal, setShowPayslipModal] = useState(false);
 
   const filteredEmployees = employees.filter((employee) => {
-    const matchesSearch = employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         employee.employeeId.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment = selectedDepartment === "All" || employee.department === selectedDepartment;
-    const matchesStatus = selectedStatus === "All" || employee.paymentStatus === selectedStatus;
-    
+    const matchesSearch =
+      employee.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      employee.employeeId.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDepartment =
+      selectedDepartment === "All" ||
+      employee.department === selectedDepartment;
+    const matchesStatus =
+      selectedStatus === "All" || employee.paymentStatus === selectedStatus;
+
     return matchesSearch && matchesDepartment && matchesStatus;
   });
 
@@ -221,7 +240,7 @@ export default function Payroll() {
                     "py-2 px-1 border-b-2 font-medium text-sm",
                     selectedTab === tab.id
                       ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   )}
                 >
                   {tab.name}
@@ -250,7 +269,9 @@ export default function Payroll() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Total Salary Budget</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Total Salary Budget
+                          </dt>
                           <dd className="text-lg font-medium text-gray-900">
                             ${payrollStats.totalSalaryBudget.toLocaleString()}
                           </dd>
@@ -268,7 +289,9 @@ export default function Payroll() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Total Employees</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Total Employees
+                          </dt>
                           <dd className="text-lg font-medium text-gray-900">
                             {payrollStats.totalEmployees}
                           </dd>
@@ -286,7 +309,9 @@ export default function Payroll() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Average Salary</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Average Salary
+                          </dt>
                           <dd className="text-lg font-medium text-gray-900">
                             ${payrollStats.averageSalary.toLocaleString()}
                           </dd>
@@ -304,7 +329,9 @@ export default function Payroll() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Pending Payments</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Pending Payments
+                          </dt>
                           <dd className="text-lg font-medium text-gray-900">
                             {payrollStats.pendingPayments}
                           </dd>
@@ -320,15 +347,24 @@ export default function Payroll() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
               <div className="lg:col-span-2 bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Payroll Periods</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">
+                    Recent Payroll Periods
+                  </h3>
                   <div className="space-y-4">
                     {payrollPeriods.map((period, index) => (
-                      <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-4 bg-gray-50 rounded-lg"
+                      >
                         <div className="flex items-center">
                           <Calendar className="h-5 w-5 text-gray-400 mr-3" />
                           <div>
-                            <div className="text-sm font-medium text-gray-900">{period.period}</div>
-                            <div className="text-xs text-gray-500">{period.employees} employees</div>
+                            <div className="text-sm font-medium text-gray-900">
+                              {period.period}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {period.employees} employees
+                            </div>
                           </div>
                         </div>
                         <div className="text-right">
@@ -347,13 +383,22 @@ export default function Payroll() {
 
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <h3 className="text-lg font-medium text-gray-900 mb-4">Salary Breakdown</h3>
+                  <h3 className="text-lg font-medium text-gray-900 mb-4">
+                    Salary Breakdown
+                  </h3>
                   <div className="space-y-4">
                     {salaryComponents.map((component, index) => (
-                      <div key={index} className="flex items-center justify-between">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between"
+                      >
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{component.component}</div>
-                          <div className="text-xs text-gray-500">{component.percentage}%</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {component.component}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {component.percentage}%
+                          </div>
                         </div>
                         <div className="text-sm font-medium text-gray-900">
                           ${component.amount.toLocaleString()}
@@ -361,16 +406,26 @@ export default function Payroll() {
                       </div>
                     ))}
                   </div>
-                  
+
                   <div className="mt-6">
-                    <div className="text-sm font-medium text-gray-700 mb-3">Distribution</div>
+                    <div className="text-sm font-medium text-gray-700 mb-3">
+                      Distribution
+                    </div>
                     <div className="space-y-2">
                       {salaryComponents.map((component, index) => (
                         <div key={index} className="flex items-center">
-                          <div className={`w-3 h-3 rounded-full mr-2 ${
-                            index === 0 ? 'bg-blue-500' : index === 1 ? 'bg-green-500' : 'bg-yellow-500'
-                          }`} />
-                          <span className="text-xs text-gray-600">{component.component}</span>
+                          <div
+                            className={`w-3 h-3 rounded-full mr-2 ${
+                              index === 0
+                                ? "bg-blue-500"
+                                : index === 1
+                                  ? "bg-green-500"
+                                  : "bg-yellow-500"
+                            }`}
+                          />
+                          <span className="text-xs text-gray-600">
+                            {component.component}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -382,29 +437,43 @@ export default function Payroll() {
             {/* Quick Actions */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Quick Actions</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Quick Actions
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <button className="flex items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
                     <div className="text-center">
                       <Calculator className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <div className="text-sm font-medium text-gray-900">Process Payroll</div>
-                      <div className="text-xs text-gray-500">Run monthly payroll</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        Process Payroll
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Run monthly payroll
+                      </div>
                     </div>
                   </button>
-                  
+
                   <button className="flex items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
                     <div className="text-center">
                       <FileText className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <div className="text-sm font-medium text-gray-900">Generate Payslips</div>
-                      <div className="text-xs text-gray-500">Bulk payslip generation</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        Generate Payslips
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Bulk payslip generation
+                      </div>
                     </div>
                   </button>
-                  
+
                   <button className="flex items-center justify-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
                     <div className="text-center">
                       <BarChart3 className="h-8 w-8 text-gray-400 mx-auto mb-2" />
-                      <div className="text-sm font-medium text-gray-900">Payroll Reports</div>
-                      <div className="text-xs text-gray-500">Generate detailed reports</div>
+                      <div className="text-sm font-medium text-gray-900">
+                        Payroll Reports
+                      </div>
+                      <div className="text-xs text-gray-500">
+                        Generate detailed reports
+                      </div>
                     </div>
                   </button>
                 </div>
@@ -494,9 +563,13 @@ export default function Payroll() {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       {filteredEmployees.map((employee) => {
-                        const totalAllowances = Object.values(employee.allowances).reduce((sum, val) => sum + val, 0);
-                        const totalDeductions = Object.values(employee.deductions).reduce((sum, val) => sum + val, 0);
-                        
+                        const totalAllowances = Object.values(
+                          employee.allowances,
+                        ).reduce((sum, val) => sum + val, 0);
+                        const totalDeductions = Object.values(
+                          employee.deductions,
+                        ).reduce((sum, val) => sum + val, 0);
+
                         return (
                           <tr key={employee.id} className="hover:bg-gray-50">
                             <td className="px-6 py-4 whitespace-nowrap">
@@ -504,7 +577,10 @@ export default function Payroll() {
                                 <div className="h-10 w-10 flex-shrink-0">
                                   <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                                     <span className="text-sm font-medium text-blue-600">
-                                      {employee.name.split(' ').map(n => n[0]).join('')}
+                                      {employee.name
+                                        .split(" ")
+                                        .map((n) => n[0])
+                                        .join("")}
                                     </span>
                                   </div>
                                 </div>
@@ -513,7 +589,8 @@ export default function Payroll() {
                                     {employee.name}
                                   </div>
                                   <div className="text-sm text-gray-500">
-                                    {employee.employeeId} • {employee.designation}
+                                    {employee.employeeId} •{" "}
+                                    {employee.designation}
                                   </div>
                                 </div>
                               </div>
@@ -522,7 +599,9 @@ export default function Payroll() {
                               <div className="text-sm font-medium text-gray-900">
                                 ${employee.baseSalary.toLocaleString()}
                               </div>
-                              <div className="text-sm text-gray-500">{employee.department}</div>
+                              <div className="text-sm text-gray-500">
+                                {employee.department}
+                              </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="text-sm font-medium text-gray-900">
@@ -548,10 +627,12 @@ export default function Payroll() {
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center">
                                 {getStatusIcon(employee.paymentStatus)}
-                                <span className={cn(
-                                  "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                                  getStatusColor(employee.paymentStatus)
-                                )}>
+                                <span
+                                  className={cn(
+                                    "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                    getStatusColor(employee.paymentStatus),
+                                  )}
+                                >
                                   {employee.paymentStatus}
                                 </span>
                               </div>
@@ -597,7 +678,9 @@ export default function Payroll() {
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-medium text-gray-900">Payslip Generation</h3>
+                  <h3 className="text-lg font-medium text-gray-900">
+                    Payslip Generation
+                  </h3>
                   <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
                     <FileText className="h-4 w-4 mr-2 inline" />
                     Generate All Payslips
@@ -606,19 +689,25 @@ export default function Payroll() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Bulk Generation</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Bulk Generation
+                    </h4>
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Pay Period</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Pay Period
+                        </label>
                         <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                           <option>January 2024</option>
                           <option>December 2023</option>
                           <option>November 2023</option>
                         </select>
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Department</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Department
+                        </label>
                         <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                           <option>All Departments</option>
                           <option>Engineering</option>
@@ -633,7 +722,10 @@ export default function Payroll() {
                           id="email-payslips"
                           className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                         />
-                        <label htmlFor="email-payslips" className="ml-2 block text-sm text-gray-900">
+                        <label
+                          htmlFor="email-payslips"
+                          className="ml-2 block text-sm text-gray-900"
+                        >
                           Email payslips to employees
                         </label>
                       </div>
@@ -641,12 +733,18 @@ export default function Payroll() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Payslip Template</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Payslip Template
+                    </h4>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                       <div className="text-center mb-4">
                         <FileText className="h-12 w-12 text-gray-400 mx-auto mb-2" />
-                        <div className="text-sm font-medium text-gray-900">Standard Payslip Template</div>
-                        <div className="text-xs text-gray-500">Company logo, salary breakdown, deductions</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Standard Payslip Template
+                        </div>
+                        <div className="text-xs text-gray-500">
+                          Company logo, salary breakdown, deductions
+                        </div>
                       </div>
                       <div className="space-y-2">
                         <button className="w-full text-left text-sm text-blue-600 hover:text-blue-700">
@@ -672,16 +770,21 @@ export default function Payroll() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">Payroll Reports</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-6">
+                  Payroll Reports
+                </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <BarChart3 className="h-6 w-6 text-blue-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Monthly Payroll Report</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Monthly Payroll Report
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
-                      Comprehensive monthly payroll summary with department breakdown
+                      Comprehensive monthly payroll summary with department
+                      breakdown
                     </p>
                     <button className="w-full bg-blue-50 text-blue-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-100">
                       Generate Report
@@ -691,10 +794,13 @@ export default function Payroll() {
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <PieChart className="h-6 w-6 text-green-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Tax Summary Report</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Tax Summary Report
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
-                      Tax deductions, social security contributions, and compliance data
+                      Tax deductions, social security contributions, and
+                      compliance data
                     </p>
                     <button className="w-full bg-green-50 text-green-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-green-100">
                       Generate Report
@@ -704,7 +810,9 @@ export default function Payroll() {
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <TrendingUp className="h-6 w-6 text-purple-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Salary Analysis</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Salary Analysis
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
                       Department-wise salary analysis and cost center breakdown
@@ -717,10 +825,13 @@ export default function Payroll() {
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <CreditCard className="h-6 w-6 text-indigo-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Payment Status Report</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Payment Status Report
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
-                      Payment tracking, bank transfer status, and failed payments
+                      Payment tracking, bank transfer status, and failed
+                      payments
                     </p>
                     <button className="w-full bg-indigo-50 text-indigo-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-100">
                       Generate Report
@@ -730,7 +841,9 @@ export default function Payroll() {
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <Calendar className="h-6 w-6 text-orange-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Year-End Report</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Year-End Report
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
                       Annual payroll summary for tax filing and compliance
@@ -743,7 +856,9 @@ export default function Payroll() {
                   <div className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer">
                     <div className="flex items-center mb-3">
                       <Building className="h-6 w-6 text-gray-600 mr-3" />
-                      <h4 className="text-md font-medium text-gray-900">Cost Center Report</h4>
+                      <h4 className="text-md font-medium text-gray-900">
+                        Cost Center Report
+                      </h4>
                     </div>
                     <p className="text-sm text-gray-600 mb-4">
                       Budget allocation and department-wise cost analysis
@@ -763,23 +878,31 @@ export default function Payroll() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">Payroll Settings</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-6">
+                  Payroll Settings
+                </h3>
 
                 <div className="space-y-8">
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Payment Configuration</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Payment Configuration
+                    </h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Pay Frequency</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Pay Frequency
+                        </label>
                         <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                           <option>Monthly</option>
                           <option>Bi-weekly</option>
                           <option>Weekly</option>
                         </select>
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Payment Date</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Payment Date
+                        </label>
                         <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                           <option>Last working day</option>
                           <option>1st of month</option>
@@ -791,19 +914,25 @@ export default function Payroll() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Tax Settings</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Tax Settings
+                    </h4>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Income Tax Rate (%)</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Income Tax Rate (%)
+                        </label>
                         <input
                           type="number"
                           defaultValue="20"
                           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                         />
                       </div>
-                      
+
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Social Security (%)</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Social Security (%)
+                        </label>
                         <input
                           type="number"
                           defaultValue="6"
@@ -812,7 +941,9 @@ export default function Payroll() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Insurance Deduction (%)</label>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Insurance Deduction (%)
+                        </label>
                         <input
                           type="number"
                           defaultValue="2.5"
@@ -823,12 +954,18 @@ export default function Payroll() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Bank Integration</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Bank Integration
+                    </h4>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">Bank API Connection</div>
-                          <div className="text-xs text-gray-500">Connect to bank for automatic salary transfers</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            Bank API Connection
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Connect to bank for automatic salary transfers
+                          </div>
                         </div>
                         <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                           Not Connected
@@ -841,7 +978,9 @@ export default function Payroll() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Third-party Integration</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Third-party Integration
+                    </h4>
                     <div className="space-y-4">
                       <div className="flex items-center justify-between p-4 border border-gray-200 rounded-lg">
                         <div className="flex items-center">
@@ -849,8 +988,12 @@ export default function Payroll() {
                             <Settings className="h-5 w-5 text-blue-600" />
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-gray-900">QuickBooks Integration</div>
-                            <div className="text-xs text-gray-500">Sync payroll data with accounting software</div>
+                            <div className="text-sm font-medium text-gray-900">
+                              QuickBooks Integration
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              Sync payroll data with accounting software
+                            </div>
                           </div>
                         </div>
                         <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
@@ -864,8 +1007,12 @@ export default function Payroll() {
                             <CreditCard className="h-5 w-5 text-green-600" />
                           </div>
                           <div>
-                            <div className="text-sm font-medium text-gray-900">Wise/Payoneer Integration</div>
-                            <div className="text-xs text-gray-500">International payment processing</div>
+                            <div className="text-sm font-medium text-gray-900">
+                              Wise/Payoneer Integration
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              International payment processing
+                            </div>
                           </div>
                         </div>
                         <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
@@ -884,9 +1031,11 @@ export default function Payroll() {
         {selectedEmployee && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setSelectedEmployee(null)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setSelectedEmployee(null)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -897,8 +1046,7 @@ export default function Payroll() {
                       onClick={() => setSelectedEmployee(null)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -907,41 +1055,76 @@ export default function Payroll() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Basic Information</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Basic Information
+                        </h4>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Employee ID:</span>
-                            <span className="text-sm font-medium">{selectedEmployee.employeeId}</span>
+                            <span className="text-sm text-gray-600">
+                              Employee ID:
+                            </span>
+                            <span className="text-sm font-medium">
+                              {selectedEmployee.employeeId}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Department:</span>
-                            <span className="text-sm font-medium">{selectedEmployee.department}</span>
+                            <span className="text-sm text-gray-600">
+                              Department:
+                            </span>
+                            <span className="text-sm font-medium">
+                              {selectedEmployee.department}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Designation:</span>
-                            <span className="text-sm font-medium">{selectedEmployee.designation}</span>
+                            <span className="text-sm text-gray-600">
+                              Designation:
+                            </span>
+                            <span className="text-sm font-medium">
+                              {selectedEmployee.designation}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Bank Account:</span>
-                            <span className="text-sm font-medium">{selectedEmployee.bankAccount}</span>
+                            <span className="text-sm text-gray-600">
+                              Bank Account:
+                            </span>
+                            <span className="text-sm font-medium">
+                              {selectedEmployee.bankAccount}
+                            </span>
                           </div>
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Allowances</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Allowances
+                        </h4>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Housing Allowance:</span>
-                            <span className="text-sm font-medium">${selectedEmployee.allowances.housing.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Housing Allowance:
+                            </span>
+                            <span className="text-sm font-medium">
+                              $
+                              {selectedEmployee.allowances.housing.toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Transport Allowance:</span>
-                            <span className="text-sm font-medium">${selectedEmployee.allowances.transport.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Transport Allowance:
+                            </span>
+                            <span className="text-sm font-medium">
+                              $
+                              {selectedEmployee.allowances.transport.toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Medical Allowance:</span>
-                            <span className="text-sm font-medium">${selectedEmployee.allowances.medical.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Medical Allowance:
+                            </span>
+                            <span className="text-sm font-medium">
+                              $
+                              {selectedEmployee.allowances.medical.toLocaleString()}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -949,27 +1132,51 @@ export default function Payroll() {
 
                     <div className="space-y-4">
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Salary Breakdown</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Salary Breakdown
+                        </h4>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Base Salary:</span>
-                            <span className="text-sm font-medium">${selectedEmployee.baseSalary.toLocaleString()}</span>
-                          </div>
-                          <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Total Allowances:</span>
-                            <span className="text-sm font-medium text-green-600">
-                              +${Object.values(selectedEmployee.allowances).reduce((sum, val) => sum + val, 0).toLocaleString()}
+                            <span className="text-sm text-gray-600">
+                              Base Salary:
+                            </span>
+                            <span className="text-sm font-medium">
+                              ${selectedEmployee.baseSalary.toLocaleString()}
                             </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Bonuses:</span>
-                            <span className="text-sm font-medium text-green-600">+${selectedEmployee.bonuses.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Total Allowances:
+                            </span>
+                            <span className="text-sm font-medium text-green-600">
+                              +$
+                              {Object.values(selectedEmployee.allowances)
+                                .reduce((sum, val) => sum + val, 0)
+                                .toLocaleString()}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-sm text-gray-600">
+                              Bonuses:
+                            </span>
+                            <span className="text-sm font-medium text-green-600">
+                              +${selectedEmployee.bonuses.toLocaleString()}
+                            </span>
                           </div>
                           <div className="border-t pt-2">
                             <div className="flex justify-between font-medium">
-                              <span className="text-sm text-gray-900">Gross Salary:</span>
+                              <span className="text-sm text-gray-900">
+                                Gross Salary:
+                              </span>
                               <span className="text-sm">
-                                ${(selectedEmployee.baseSalary + Object.values(selectedEmployee.allowances).reduce((sum, val) => sum + val, 0) + selectedEmployee.bonuses).toLocaleString()}
+                                $
+                                {(
+                                  selectedEmployee.baseSalary +
+                                  Object.values(
+                                    selectedEmployee.allowances,
+                                  ).reduce((sum, val) => sum + val, 0) +
+                                  selectedEmployee.bonuses
+                                ).toLocaleString()}
                               </span>
                             </div>
                           </div>
@@ -977,25 +1184,47 @@ export default function Payroll() {
                       </div>
 
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Deductions</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Deductions
+                        </h4>
                         <div className="space-y-2">
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Income Tax:</span>
-                            <span className="text-sm font-medium text-red-600">-${selectedEmployee.deductions.tax.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Income Tax:
+                            </span>
+                            <span className="text-sm font-medium text-red-600">
+                              -$
+                              {selectedEmployee.deductions.tax.toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Social Security:</span>
-                            <span className="text-sm font-medium text-red-600">-${selectedEmployee.deductions.socialSecurity.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Social Security:
+                            </span>
+                            <span className="text-sm font-medium text-red-600">
+                              -$
+                              {selectedEmployee.deductions.socialSecurity.toLocaleString()}
+                            </span>
                           </div>
                           <div className="flex justify-between">
-                            <span className="text-sm text-gray-600">Insurance:</span>
-                            <span className="text-sm font-medium text-red-600">-${selectedEmployee.deductions.insurance.toLocaleString()}</span>
+                            <span className="text-sm text-gray-600">
+                              Insurance:
+                            </span>
+                            <span className="text-sm font-medium text-red-600">
+                              -$
+                              {selectedEmployee.deductions.insurance.toLocaleString()}
+                            </span>
                           </div>
                           <div className="border-t pt-2">
                             <div className="flex justify-between font-medium">
-                              <span className="text-sm text-gray-900">Total Deductions:</span>
+                              <span className="text-sm text-gray-900">
+                                Total Deductions:
+                              </span>
                               <span className="text-sm text-red-600">
-                                -${Object.values(selectedEmployee.deductions).reduce((sum, val) => sum + val, 0).toLocaleString()}
+                                -$
+                                {Object.values(selectedEmployee.deductions)
+                                  .reduce((sum, val) => sum + val, 0)
+                                  .toLocaleString()}
                               </span>
                             </div>
                           </div>
@@ -1004,7 +1233,9 @@ export default function Payroll() {
 
                       <div className="bg-green-50 border border-green-200 rounded-lg p-4">
                         <div className="flex justify-between items-center">
-                          <span className="text-lg font-medium text-green-800">Net Salary:</span>
+                          <span className="text-lg font-medium text-green-800">
+                            Net Salary:
+                          </span>
                           <span className="text-xl font-bold text-green-600">
                             ${selectedEmployee.netSalary.toLocaleString()}
                           </span>
@@ -1033,9 +1264,11 @@ export default function Payroll() {
         {showSalaryForm && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowSalaryForm(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowSalaryForm(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -1046,8 +1279,7 @@ export default function Payroll() {
                       onClick={() => setShowSalaryForm(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -1068,7 +1300,9 @@ export default function Payroll() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Basic Salary</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Basic Salary
+                        </h4>
                         <div>
                           <label className="block text-sm font-medium text-gray-700">
                             Base Salary (Annual)
@@ -1087,7 +1321,9 @@ export default function Payroll() {
                       </div>
 
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-3">Bank Details</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-3">
+                          Bank Details
+                        </h4>
                         <div>
                           <label className="block text-sm font-medium text-gray-700">
                             Bank Account Number
@@ -1102,10 +1338,14 @@ export default function Payroll() {
                     </div>
 
                     <div>
-                      <h4 className="text-md font-medium text-gray-900 mb-3">Allowances</h4>
+                      <h4 className="text-md font-medium text-gray-900 mb-3">
+                        Allowances
+                      </h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Housing Allowance</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Housing Allowance
+                          </label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                               <DollarSign className="h-4 w-4 text-gray-400" />
@@ -1119,7 +1359,9 @@ export default function Payroll() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Transport Allowance</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Transport Allowance
+                          </label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                               <DollarSign className="h-4 w-4 text-gray-400" />
@@ -1133,7 +1375,9 @@ export default function Payroll() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Medical Allowance</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Medical Allowance
+                          </label>
                           <div className="mt-1 relative rounded-md shadow-sm">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                               <DollarSign className="h-4 w-4 text-gray-400" />
@@ -1149,10 +1393,14 @@ export default function Payroll() {
                     </div>
 
                     <div>
-                      <h4 className="text-md font-medium text-gray-900 mb-3">Deductions</h4>
+                      <h4 className="text-md font-medium text-gray-900 mb-3">
+                        Deductions
+                      </h4>
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Tax Rate (%)</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Tax Rate (%)
+                          </label>
                           <input
                             type="number"
                             step="0.1"
@@ -1162,7 +1410,9 @@ export default function Payroll() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Social Security (%)</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Social Security (%)
+                          </label>
                           <input
                             type="number"
                             step="0.1"
@@ -1172,7 +1422,9 @@ export default function Payroll() {
                         </div>
 
                         <div>
-                          <label className="block text-sm font-medium text-gray-700">Insurance (%)</label>
+                          <label className="block text-sm font-medium text-gray-700">
+                            Insurance (%)
+                          </label>
                           <input
                             type="number"
                             step="0.1"

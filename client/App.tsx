@@ -21,63 +21,96 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         {/* Admin/HR Routes */}
-        <Route path="/" element={
-          <Layout>
-            <Index />
-          </Layout>
-        } />
-        <Route path="/employees" element={
-          <Layout>
-            <Employees />
-          </Layout>
-        } />
-        <Route path="/attendance" element={
-          <Layout>
-            <Attendance />
-          </Layout>
-        } />
-        <Route path="/leave" element={
-          <Layout>
-            <Leave />
-          </Layout>
-        } />
-        <Route path="/payroll" element={
-          <Layout>
-            <Payroll />
-          </Layout>
-        } />
-        <Route path="/reports" element={
-          <Layout>
-            <Reports />
-          </Layout>
-        } />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Index />
+            </Layout>
+          }
+        />
+        <Route
+          path="/employees"
+          element={
+            <Layout>
+              <Employees />
+            </Layout>
+          }
+        />
+        <Route
+          path="/attendance"
+          element={
+            <Layout>
+              <Attendance />
+            </Layout>
+          }
+        />
+        <Route
+          path="/leave"
+          element={
+            <Layout>
+              <Leave />
+            </Layout>
+          }
+        />
+        <Route
+          path="/payroll"
+          element={
+            <Layout>
+              <Payroll />
+            </Layout>
+          }
+        />
+        <Route
+          path="/reports"
+          element={
+            <Layout>
+              <Reports />
+            </Layout>
+          }
+        />
 
         {/* Employee Routes */}
-        <Route path="/employee" element={
-          <EmployeeLayout>
-            <EmployeeDashboard />
-          </EmployeeLayout>
-        } />
-        <Route path="/employee/attendance" element={
-          <EmployeeLayout>
-            <EmployeeAttendance />
-          </EmployeeLayout>
-        } />
-        <Route path="/employee/leave" element={
-          <EmployeeLayout>
-            <EmployeeLeave />
-          </EmployeeLayout>
-        } />
-        <Route path="/employee/profile" element={
-          <EmployeeLayout>
-            <EmployeeProfile />
-          </EmployeeLayout>
-        } />
-        <Route path="/employee/payslips" element={
-          <EmployeeLayout>
-            <EmployeePayslips />
-          </EmployeeLayout>
-        } />
+        <Route
+          path="/employee"
+          element={
+            <EmployeeLayout>
+              <EmployeeDashboard />
+            </EmployeeLayout>
+          }
+        />
+        <Route
+          path="/employee/attendance"
+          element={
+            <EmployeeLayout>
+              <EmployeeAttendance />
+            </EmployeeLayout>
+          }
+        />
+        <Route
+          path="/employee/leave"
+          element={
+            <EmployeeLayout>
+              <EmployeeLeave />
+            </EmployeeLayout>
+          }
+        />
+        <Route
+          path="/employee/profile"
+          element={
+            <EmployeeLayout>
+              <EmployeeProfile />
+            </EmployeeLayout>
+          }
+        />
+        <Route
+          path="/employee/payslips"
+          element={
+            <EmployeeLayout>
+              <EmployeePayslips />
+            </EmployeeLayout>
+          }
+        />
 
         {/* 404 Route */}
         <Route path="*" element={<NotFound />} />

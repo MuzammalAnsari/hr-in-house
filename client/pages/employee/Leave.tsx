@@ -58,17 +58,64 @@ const myLeaveRequests = [
 
 // Mock leave balance data
 const leaveBalance = [
-  { type: "Annual Leave", total: 21, used: 8, remaining: 13, pending: 2, icon: Plane, color: "blue" },
-  { type: "Sick Leave", total: 10, used: 3, remaining: 7, pending: 0, icon: Heart, color: "red" },
-  { type: "Casual Leave", total: 12, used: 5, remaining: 7, pending: 1, icon: Coffee, color: "green" },
-  { type: "Unpaid Leave", total: 0, used: 0, remaining: 0, pending: 0, icon: Briefcase, color: "gray" },
+  {
+    type: "Annual Leave",
+    total: 21,
+    used: 8,
+    remaining: 13,
+    pending: 2,
+    icon: Plane,
+    color: "blue",
+  },
+  {
+    type: "Sick Leave",
+    total: 10,
+    used: 3,
+    remaining: 7,
+    pending: 0,
+    icon: Heart,
+    color: "red",
+  },
+  {
+    type: "Casual Leave",
+    total: 12,
+    used: 5,
+    remaining: 7,
+    pending: 1,
+    icon: Coffee,
+    color: "green",
+  },
+  {
+    type: "Unpaid Leave",
+    total: 0,
+    used: 0,
+    remaining: 0,
+    pending: 0,
+    icon: Briefcase,
+    color: "gray",
+  },
 ];
 
 // Leave types for application
 const leaveTypes = [
-  { id: 1, name: "Annual Leave", code: "AL", description: "Yearly vacation leave" },
-  { id: 2, name: "Sick Leave", code: "SL", description: "Medical leave for illness" },
-  { id: 3, name: "Casual Leave", code: "CL", description: "Short-term personal leave" },
+  {
+    id: 1,
+    name: "Annual Leave",
+    code: "AL",
+    description: "Yearly vacation leave",
+  },
+  {
+    id: 2,
+    name: "Sick Leave",
+    code: "SL",
+    description: "Medical leave for illness",
+  },
+  {
+    id: 3,
+    name: "Casual Leave",
+    code: "CL",
+    description: "Short-term personal leave",
+  },
   { id: 4, name: "Unpaid Leave", code: "UL", description: "Leave without pay" },
 ];
 
@@ -145,7 +192,7 @@ export default function EmployeeLeave() {
                     "py-2 px-1 border-b-2 font-medium text-sm",
                     selectedTab === tab.id
                       ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   )}
                 >
                   {tab.name}
@@ -165,29 +212,45 @@ export default function EmployeeLeave() {
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-8">
             {leaveBalance.map((balance, index) => {
               const Icon = balance.icon;
-              const percentage = balance.total > 0 ? Math.round((balance.remaining / balance.total) * 100) : 0;
-              
+              const percentage =
+                balance.total > 0
+                  ? Math.round((balance.remaining / balance.total) * 100)
+                  : 0;
+
               return (
-                <div key={index} className="bg-white overflow-hidden shadow border border-gray-200 rounded-lg">
+                <div
+                  key={index}
+                  className="bg-white overflow-hidden shadow border border-gray-200 rounded-lg"
+                >
                   <div className="p-5">
                     <div className="flex items-center mb-4">
-                      <div className={`flex-shrink-0 p-2 rounded-lg bg-${balance.color}-100`}>
+                      <div
+                        className={`flex-shrink-0 p-2 rounded-lg bg-${balance.color}-100`}
+                      >
                         <Icon className={`h-6 w-6 text-${balance.color}-600`} />
                       </div>
                       <div className="ml-3">
-                        <h3 className="text-sm font-medium text-gray-900">{balance.type}</h3>
+                        <h3 className="text-sm font-medium text-gray-900">
+                          {balance.type}
+                        </h3>
                         <p className="text-xs text-gray-500">
-                          {balance.total > 0 ? `${balance.total} days allocated` : "Unlimited"}
+                          {balance.total > 0
+                            ? `${balance.total} days allocated`
+                            : "Unlimited"}
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="space-y-3">
                       <div className="flex justify-between items-center">
-                        <span className="text-2xl font-bold text-gray-900">{balance.remaining}</span>
-                        <span className="text-sm text-gray-500">days remaining</span>
+                        <span className="text-2xl font-bold text-gray-900">
+                          {balance.remaining}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          days remaining
+                        </span>
                       </div>
-                      
+
                       {balance.total > 0 && (
                         <div className="w-full bg-gray-200 rounded-full h-2">
                           <div
@@ -196,14 +259,18 @@ export default function EmployeeLeave() {
                           />
                         </div>
                       )}
-                      
+
                       <div className="grid grid-cols-2 gap-2 text-xs">
                         <div className="text-center p-2 bg-gray-50 rounded">
-                          <div className="font-medium text-gray-900">{balance.used}</div>
+                          <div className="font-medium text-gray-900">
+                            {balance.used}
+                          </div>
                           <div className="text-gray-500">Used</div>
                         </div>
                         <div className="text-center p-2 bg-yellow-50 rounded">
-                          <div className="font-medium text-yellow-800">{balance.pending}</div>
+                          <div className="font-medium text-yellow-800">
+                            {balance.pending}
+                          </div>
                           <div className="text-yellow-600">Pending</div>
                         </div>
                       </div>
@@ -253,15 +320,21 @@ export default function EmployeeLeave() {
                     {myLeaveRequests.map((request) => (
                       <tr key={request.id} className="hover:bg-gray-50">
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <div className="text-sm font-medium text-gray-900">{request.leaveType}</div>
-                          <div className="text-sm text-gray-500">{request.reason}</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {request.leaveType}
+                          </div>
+                          <div className="text-sm text-gray-500">
+                            {request.reason}
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">
                             {new Date(request.startDate).toLocaleDateString()} -{" "}
                             {new Date(request.endDate).toLocaleDateString()}
                           </div>
-                          <div className="text-sm text-gray-500">{request.days} days</div>
+                          <div className="text-sm text-gray-500">
+                            {request.days} days
+                          </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                           {new Date(request.appliedDate).toLocaleDateString()}
@@ -269,10 +342,12 @@ export default function EmployeeLeave() {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             {getStatusIcon(request.status)}
-                            <span className={cn(
-                              "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                              getStatusColor(request.status)
-                            )}>
+                            <span
+                              className={cn(
+                                "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                getStatusColor(request.status),
+                              )}
+                            >
                               {request.status}
                             </span>
                           </div>
@@ -302,25 +377,41 @@ export default function EmployeeLeave() {
         {selectedTab === "calendar" && (
           <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-lg font-medium text-gray-900 mb-6">My Leave Calendar</h3>
-              
+              <h3 className="text-lg font-medium text-gray-900 mb-6">
+                My Leave Calendar
+              </h3>
+
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
                 <div className="lg:col-span-3">
                   <div className="bg-gray-50 rounded-lg p-8 text-center">
                     <Calendar className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                    <h4 className="text-lg font-medium text-gray-900 mb-2">Personal Leave Calendar</h4>
-                    <p className="text-gray-600">Your personal leave calendar showing approved and pending leaves would be displayed here.</p>
+                    <h4 className="text-lg font-medium text-gray-900 mb-2">
+                      Personal Leave Calendar
+                    </h4>
+                    <p className="text-gray-600">
+                      Your personal leave calendar showing approved and pending
+                      leaves would be displayed here.
+                    </p>
                   </div>
                 </div>
 
                 <div>
-                  <h4 className="text-md font-medium text-gray-900 mb-4">My Leave Status</h4>
+                  <h4 className="text-md font-medium text-gray-900 mb-4">
+                    My Leave Status
+                  </h4>
                   <div className="space-y-3">
                     {leaveTypes.map((type, index) => (
-                      <div key={type.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div
+                        key={type.id}
+                        className="flex items-center justify-between p-3 bg-gray-50 rounded-lg"
+                      >
                         <div>
-                          <div className="text-sm font-medium text-gray-900">{type.name}</div>
-                          <div className="text-xs text-gray-500">{type.code}</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {type.name}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {type.code}
+                          </div>
                         </div>
                         <div className="text-right">
                           <div className="text-sm font-medium text-gray-900">
@@ -341,9 +432,11 @@ export default function EmployeeLeave() {
         {showApplyForm && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowApplyForm(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowApplyForm(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -354,8 +447,7 @@ export default function EmployeeLeave() {
                       onClick={() => setShowApplyForm(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -435,9 +527,12 @@ export default function EmployeeLeave() {
                       <div className="flex">
                         <AlertCircle className="h-5 w-5 text-blue-400 mt-0.5 mr-3" />
                         <div>
-                          <h4 className="text-sm font-medium text-blue-800">Leave Balance Check</h4>
+                          <h4 className="text-sm font-medium text-blue-800">
+                            Leave Balance Check
+                          </h4>
                           <p className="mt-1 text-sm text-blue-700">
-                            Annual Leave: 13 days remaining | This request will be deducted from your balance
+                            Annual Leave: 13 days remaining | This request will
+                            be deducted from your balance
                           </p>
                         </div>
                       </div>
@@ -469,9 +564,11 @@ export default function EmployeeLeave() {
         {selectedRequest && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setSelectedRequest(null)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setSelectedRequest(null)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-lg w-full">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -482,8 +579,7 @@ export default function EmployeeLeave() {
                       onClick={() => setSelectedRequest(null)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -491,31 +587,49 @@ export default function EmployeeLeave() {
                 <div className="p-6">
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Leave Type</label>
-                      <p className="mt-1 text-sm text-gray-900">{selectedRequest.leaveType}</p>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700">Duration</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Leave Type
+                      </label>
                       <p className="mt-1 text-sm text-gray-900">
-                        {new Date(selectedRequest.startDate).toLocaleDateString()} to{" "}
-                        {new Date(selectedRequest.endDate).toLocaleDateString()} ({selectedRequest.days} days)
+                        {selectedRequest.leaveType}
                       </p>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Reason</label>
-                      <p className="mt-1 text-sm text-gray-900">{selectedRequest.reason}</p>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Duration
+                      </label>
+                      <p className="mt-1 text-sm text-gray-900">
+                        {new Date(
+                          selectedRequest.startDate,
+                        ).toLocaleDateString()}{" "}
+                        to{" "}
+                        {new Date(selectedRequest.endDate).toLocaleDateString()}{" "}
+                        ({selectedRequest.days} days)
+                      </p>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Status</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Reason
+                      </label>
+                      <p className="mt-1 text-sm text-gray-900">
+                        {selectedRequest.reason}
+                      </p>
+                    </div>
+
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Status
+                      </label>
                       <div className="mt-1 flex items-center">
                         {getStatusIcon(selectedRequest.status)}
-                        <span className={cn(
-                          "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                          getStatusColor(selectedRequest.status)
-                        )}>
+                        <span
+                          className={cn(
+                            "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                            getStatusColor(selectedRequest.status),
+                          )}
+                        >
                           {selectedRequest.status}
                         </span>
                       </div>
@@ -523,8 +637,12 @@ export default function EmployeeLeave() {
 
                     {selectedRequest.comments && (
                       <div>
-                        <label className="block text-sm font-medium text-gray-700">Comments</label>
-                        <p className="mt-1 text-sm text-gray-900">{selectedRequest.comments}</p>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Comments
+                        </label>
+                        <p className="mt-1 text-sm text-gray-900">
+                          {selectedRequest.comments}
+                        </p>
                       </div>
                     )}
                   </div>

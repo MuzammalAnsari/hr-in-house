@@ -45,23 +45,101 @@ const hrKPIs = {
 
 // Mock data for monthly trends
 const monthlyTrends = [
-  { month: "Jan 2024", employees: 235, attendance: 94.2, attrition: 2.1, newHires: 8 },
-  { month: "Dec 2023", employees: 229, attendance: 92.8, attrition: 2.8, newHires: 6 },
-  { month: "Nov 2023", employees: 225, attendance: 95.1, attrition: 1.9, newHires: 10 },
-  { month: "Oct 2023", employees: 217, attendance: 93.6, attrition: 2.5, newHires: 12 },
-  { month: "Sep 2023", employees: 208, attendance: 91.4, attrition: 3.2, newHires: 15 },
-  { month: "Aug 2023", employees: 196, attendance: 92.9, attrition: 2.7, newHires: 9 },
+  {
+    month: "Jan 2024",
+    employees: 235,
+    attendance: 94.2,
+    attrition: 2.1,
+    newHires: 8,
+  },
+  {
+    month: "Dec 2023",
+    employees: 229,
+    attendance: 92.8,
+    attrition: 2.8,
+    newHires: 6,
+  },
+  {
+    month: "Nov 2023",
+    employees: 225,
+    attendance: 95.1,
+    attrition: 1.9,
+    newHires: 10,
+  },
+  {
+    month: "Oct 2023",
+    employees: 217,
+    attendance: 93.6,
+    attrition: 2.5,
+    newHires: 12,
+  },
+  {
+    month: "Sep 2023",
+    employees: 208,
+    attendance: 91.4,
+    attrition: 3.2,
+    newHires: 15,
+  },
+  {
+    month: "Aug 2023",
+    employees: 196,
+    attendance: 92.9,
+    attrition: 2.7,
+    newHires: 9,
+  },
 ];
 
 // Mock data for department analytics
 const departmentData = [
-  { department: "Engineering", employees: 85, attendance: 94.8, avgSalary: 95000, turnover: 5.2 },
-  { department: "Design", employees: 32, attendance: 92.1, avgSalary: 78000, turnover: 8.1 },
-  { department: "Marketing", employees: 28, attendance: 91.5, avgSalary: 65000, turnover: 12.5 },
-  { department: "Sales", employees: 45, attendance: 89.3, avgSalary: 72000, turnover: 15.2 },
-  { department: "HR", employees: 12, attendance: 96.2, avgSalary: 68000, turnover: 3.8 },
-  { department: "Finance", employees: 18, attendance: 95.7, avgSalary: 82000, turnover: 4.2 },
-  { department: "Operations", employees: 27, attendance: 93.1, avgSalary: 58000, turnover: 9.8 },
+  {
+    department: "Engineering",
+    employees: 85,
+    attendance: 94.8,
+    avgSalary: 95000,
+    turnover: 5.2,
+  },
+  {
+    department: "Design",
+    employees: 32,
+    attendance: 92.1,
+    avgSalary: 78000,
+    turnover: 8.1,
+  },
+  {
+    department: "Marketing",
+    employees: 28,
+    attendance: 91.5,
+    avgSalary: 65000,
+    turnover: 12.5,
+  },
+  {
+    department: "Sales",
+    employees: 45,
+    attendance: 89.3,
+    avgSalary: 72000,
+    turnover: 15.2,
+  },
+  {
+    department: "HR",
+    employees: 12,
+    attendance: 96.2,
+    avgSalary: 68000,
+    turnover: 3.8,
+  },
+  {
+    department: "Finance",
+    employees: 18,
+    attendance: 95.7,
+    avgSalary: 82000,
+    turnover: 4.2,
+  },
+  {
+    department: "Operations",
+    employees: 27,
+    attendance: 93.1,
+    avgSalary: 58000,
+    turnover: 9.8,
+  },
 ];
 
 // Mock data for recent reports
@@ -155,7 +233,12 @@ const reportTypes = [
     description: "Salary, deductions, and payment analytics",
     icon: DollarSign,
     color: "green",
-    metrics: ["Salary Distribution", "Tax Calculations", "Payment Status", "Cost Analysis"],
+    metrics: [
+      "Salary Distribution",
+      "Tax Calculations",
+      "Payment Status",
+      "Cost Analysis",
+    ],
   },
   {
     id: "employee",
@@ -171,7 +254,12 @@ const reportTypes = [
     description: "Employee performance and review analytics",
     icon: Target,
     color: "orange",
-    metrics: ["Performance Scores", "Goal Achievement", "Review Status", "Growth Tracking"],
+    metrics: [
+      "Performance Scores",
+      "Goal Achievement",
+      "Review Status",
+      "Growth Tracking",
+    ],
   },
   {
     id: "leave",
@@ -179,7 +267,12 @@ const reportTypes = [
     description: "Leave balance and utilization analytics",
     icon: CalendarDays,
     color: "indigo",
-    metrics: ["Leave Balance", "Utilization Rate", "Approval Status", "Patterns"],
+    metrics: [
+      "Leave Balance",
+      "Utilization Rate",
+      "Approval Status",
+      "Patterns",
+    ],
   },
   {
     id: "compliance",
@@ -187,7 +280,12 @@ const reportTypes = [
     description: "Regulatory and audit compliance reports",
     icon: FileText,
     color: "red",
-    metrics: ["Audit Logs", "Policy Compliance", "Document Status", "Risk Assessment"],
+    metrics: [
+      "Audit Logs",
+      "Policy Compliance",
+      "Document Status",
+      "Risk Assessment",
+    ],
   },
 ];
 
@@ -282,7 +380,7 @@ export default function Reports() {
                     "py-2 px-1 border-b-2 font-medium text-sm",
                     selectedTab === tab.id
                       ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   )}
                 >
                   {tab.name}
@@ -302,7 +400,9 @@ export default function Reports() {
           <>
             {/* HR KPIs */}
             <div className="mb-8">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Key Performance Indicators</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Key Performance Indicators
+              </h3>
               <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
                 <div className="bg-white overflow-hidden shadow border border-gray-200 rounded-lg">
                   <div className="p-5">
@@ -312,7 +412,9 @@ export default function Reports() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Total Employees</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Total Employees
+                          </dt>
                           <dd className="flex items-baseline">
                             <div className="text-2xl font-semibold text-gray-900">
                               {hrKPIs.totalEmployees}
@@ -336,7 +438,9 @@ export default function Reports() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Attendance Rate</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Attendance Rate
+                          </dt>
                           <dd className="flex items-baseline">
                             <div className="text-2xl font-semibold text-gray-900">
                               {hrKPIs.attendanceRate}%
@@ -360,10 +464,16 @@ export default function Reports() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Attrition Rate</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Attrition Rate
+                          </dt>
                           <dd className="flex items-baseline">
                             <div className="text-2xl font-semibold text-gray-900">
-                              {((hrKPIs.attrition / hrKPIs.totalEmployees) * 100).toFixed(1)}%
+                              {(
+                                (hrKPIs.attrition / hrKPIs.totalEmployees) *
+                                100
+                              ).toFixed(1)}
+                              %
                             </div>
                             <div className="ml-2 flex items-baseline text-sm font-semibold text-red-600">
                               <ArrowDownRight className="h-4 w-4 mr-1" />
@@ -384,7 +494,9 @@ export default function Reports() {
                       </div>
                       <div className="ml-5 w-0 flex-1">
                         <dl>
-                          <dt className="text-sm font-medium text-gray-500 truncate">Performance Score</dt>
+                          <dt className="text-sm font-medium text-gray-500 truncate">
+                            Performance Score
+                          </dt>
                           <dd className="flex items-baseline">
                             <div className="text-2xl font-semibold text-gray-900">
                               {hrKPIs.performanceScore}/5
@@ -404,7 +516,9 @@ export default function Reports() {
 
             {/* Department Analytics */}
             <div className="mb-8">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Department Analytics</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Department Analytics
+              </h3>
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
                   <div className="overflow-x-auto">
@@ -434,7 +548,9 @@ export default function Reports() {
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center">
                                 <Building className="h-5 w-5 text-gray-400 mr-3" />
-                                <div className="text-sm font-medium text-gray-900">{dept.department}</div>
+                                <div className="text-sm font-medium text-gray-900">
+                                  {dept.department}
+                                </div>
                               </div>
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -442,7 +558,9 @@ export default function Reports() {
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
                               <div className="flex items-center">
-                                <div className="text-sm text-gray-900">{dept.attendance}%</div>
+                                <div className="text-sm text-gray-900">
+                                  {dept.attendance}%
+                                </div>
                                 <div className="ml-2 w-16 bg-gray-200 rounded-full h-2">
                                   <div
                                     className="bg-green-600 h-2 rounded-full"
@@ -455,14 +573,16 @@ export default function Reports() {
                               ${dept.avgSalary.toLocaleString()}
                             </td>
                             <td className="px-6 py-4 whitespace-nowrap">
-                              <span className={cn(
-                                "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                                dept.turnover < 5
-                                  ? "bg-green-100 text-green-800"
-                                  : dept.turnover < 10
-                                  ? "bg-yellow-100 text-yellow-800"
-                                  : "bg-red-100 text-red-800"
-                              )}>
+                              <span
+                                className={cn(
+                                  "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                  dept.turnover < 5
+                                    ? "bg-green-100 text-green-800"
+                                    : dept.turnover < 10
+                                      ? "bg-yellow-100 text-yellow-800"
+                                      : "bg-red-100 text-red-800",
+                                )}
+                              >
                                 {dept.turnover}%
                               </span>
                             </td>
@@ -477,7 +597,9 @@ export default function Reports() {
 
             {/* Trends Chart */}
             <div className="mb-8">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">Monthly Trends</h3>
+              <h3 className="text-lg font-medium text-gray-900 mb-4">
+                Monthly Trends
+              </h3>
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
                   <div className="mb-4">
@@ -500,11 +622,14 @@ export default function Reports() {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="h-64 bg-gray-50 rounded-lg flex items-center justify-center">
                     <div className="text-center">
                       <BarChart3 className="h-16 w-16 text-gray-400 mx-auto mb-4" />
-                      <p className="text-gray-600">Interactive chart showing monthly trends would be displayed here</p>
+                      <p className="text-gray-600">
+                        Interactive chart showing monthly trends would be
+                        displayed here
+                      </p>
                       <p className="text-sm text-gray-500 mt-2">
                         Data: {monthlyTrends.length} months of HR metrics
                       </p>
@@ -518,30 +643,40 @@ export default function Reports() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <h4 className="text-md font-medium text-gray-900 mb-4">Key Insights</h4>
+                  <h4 className="text-md font-medium text-gray-900 mb-4">
+                    Key Insights
+                  </h4>
                   <div className="space-y-4">
                     <div className="flex items-start">
                       <TrendingUp className="h-5 w-5 text-green-500 mt-0.5 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Attendance Improvement</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Attendance Improvement
+                        </div>
                         <div className="text-sm text-gray-600">
-                          Overall attendance has improved by 1.2% this month compared to last month
+                          Overall attendance has improved by 1.2% this month
+                          compared to last month
                         </div>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <AlertTriangle className="h-5 w-5 text-orange-500 mt-0.5 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">High Turnover Alert</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          High Turnover Alert
+                        </div>
                         <div className="text-sm text-gray-600">
-                          Sales department shows 15.2% turnover rate, requiring attention
+                          Sales department shows 15.2% turnover rate, requiring
+                          attention
                         </div>
                       </div>
                     </div>
                     <div className="flex items-start">
                       <CheckCircle className="h-5 w-5 text-blue-500 mt-0.5 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">Hiring Success</div>
+                        <div className="text-sm font-medium text-gray-900">
+                          Hiring Success
+                        </div>
                         <div className="text-sm text-gray-600">
                           12 new hires this month, 8% above target for Q1 growth
                         </div>
@@ -553,33 +688,56 @@ export default function Reports() {
 
               <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
                 <div className="px-4 py-5 sm:p-6">
-                  <h4 className="text-md font-medium text-gray-900 mb-4">Performance Metrics</h4>
+                  <h4 className="text-md font-medium text-gray-900 mb-4">
+                    Performance Metrics
+                  </h4>
                   <div className="space-y-4">
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Average Working Hours</span>
-                        <span className="text-sm text-gray-900">{hrKPIs.averageWorkingHours}h/day</span>
+                        <span className="text-sm font-medium text-gray-700">
+                          Average Working Hours
+                        </span>
+                        <span className="text-sm text-gray-900">
+                          {hrKPIs.averageWorkingHours}h/day
+                        </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-blue-600 h-2 rounded-full" style={{ width: "82%" }} />
+                        <div
+                          className="bg-blue-600 h-2 rounded-full"
+                          style={{ width: "82%" }}
+                        />
                       </div>
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Leave Utilization</span>
-                        <span className="text-sm text-gray-900">{hrKPIs.leaveUtilization}%</span>
+                        <span className="text-sm font-medium text-gray-700">
+                          Leave Utilization
+                        </span>
+                        <span className="text-sm text-gray-900">
+                          {hrKPIs.leaveUtilization}%
+                        </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-green-600 h-2 rounded-full" style={{ width: "68%" }} />
+                        <div
+                          className="bg-green-600 h-2 rounded-full"
+                          style={{ width: "68%" }}
+                        />
                       </div>
                     </div>
                     <div>
                       <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm font-medium text-gray-700">Performance Score</span>
-                        <span className="text-sm text-gray-900">{hrKPIs.performanceScore}/5</span>
+                        <span className="text-sm font-medium text-gray-700">
+                          Performance Score
+                        </span>
+                        <span className="text-sm text-gray-900">
+                          {hrKPIs.performanceScore}/5
+                        </span>
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div className="bg-purple-600 h-2 rounded-full" style={{ width: "84%" }} />
+                        <div
+                          className="bg-purple-600 h-2 rounded-full"
+                          style={{ width: "84%" }}
+                        />
                       </div>
                     </div>
                   </div>
@@ -595,7 +753,9 @@ export default function Reports() {
             <div className="mb-6 bg-white rounded-lg border border-gray-200 p-4">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Date Range</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Date Range
+                  </label>
                   <select
                     className="block w-full rounded-md border-gray-300 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                     value={dateRange}
@@ -610,7 +770,9 @@ export default function Reports() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Department</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Department
+                  </label>
                   <select
                     className="block w-full rounded-md border-gray-300 py-2 text-sm focus:border-blue-500 focus:ring-blue-500"
                     value={selectedDepartment}
@@ -645,21 +807,36 @@ export default function Reports() {
                     onClick={() => setSelectedReportType(reportType.id)}
                   >
                     <div className="flex items-center mb-4">
-                      <div className={`p-2 rounded-lg bg-${reportType.color}-100 mr-3`}>
-                        <Icon className={`h-6 w-6 text-${reportType.color}-600`} />
+                      <div
+                        className={`p-2 rounded-lg bg-${reportType.color}-100 mr-3`}
+                      >
+                        <Icon
+                          className={`h-6 w-6 text-${reportType.color}-600`}
+                        />
                       </div>
-                      <h3 className="text-lg font-medium text-gray-900">{reportType.name}</h3>
+                      <h3 className="text-lg font-medium text-gray-900">
+                        {reportType.name}
+                      </h3>
                     </div>
-                    <p className="text-sm text-gray-600 mb-4">{reportType.description}</p>
+                    <p className="text-sm text-gray-600 mb-4">
+                      {reportType.description}
+                    </p>
                     <div className="space-y-2">
                       {reportType.metrics.map((metric, index) => (
-                        <div key={index} className="flex items-center text-sm text-gray-700">
-                          <div className={`w-2 h-2 rounded-full bg-${reportType.color}-500 mr-2`} />
+                        <div
+                          key={index}
+                          className="flex items-center text-sm text-gray-700"
+                        >
+                          <div
+                            className={`w-2 h-2 rounded-full bg-${reportType.color}-500 mr-2`}
+                          />
                           {metric}
                         </div>
                       ))}
                     </div>
-                    <button className={`mt-4 w-full bg-${reportType.color}-50 text-${reportType.color}-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-${reportType.color}-100`}>
+                    <button
+                      className={`mt-4 w-full bg-${reportType.color}-50 text-${reportType.color}-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-${reportType.color}-100`}
+                    >
                       Generate Report
                     </button>
                   </div>
@@ -669,7 +846,9 @@ export default function Reports() {
 
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Recent Reports</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Recent Reports
+                </h3>
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -703,7 +882,9 @@ export default function Reports() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <FileText className="h-5 w-5 text-gray-400 mr-3" />
-                              <div className="text-sm font-medium text-gray-900">{report.name}</div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {report.name}
+                              </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -713,15 +894,19 @@ export default function Reports() {
                             {report.generatedBy}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            {new Date(report.generatedDate).toLocaleDateString()}
+                            {new Date(
+                              report.generatedDate,
+                            ).toLocaleDateString()}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               {getStatusIcon(report.status)}
-                              <span className={cn(
-                                "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                                getStatusColor(report.status)
-                              )}>
+                              <span
+                                className={cn(
+                                  "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                  getStatusColor(report.status),
+                                )}
+                              >
                                 {report.status}
                               </span>
                             </div>
@@ -760,31 +945,48 @@ export default function Reports() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">Custom Report Builder</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-6">
+                  Custom Report Builder
+                </h3>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                   <div className="lg:col-span-2">
                     <div className="space-y-6">
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-4">Data Sources</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-4">
+                          Data Sources
+                        </h4>
                         <div className="grid grid-cols-2 gap-4">
-                          {["Employees", "Attendance", "Leave", "Payroll", "Performance", "Departments"].map((source) => (
+                          {[
+                            "Employees",
+                            "Attendance",
+                            "Leave",
+                            "Payroll",
+                            "Performance",
+                            "Departments",
+                          ].map((source) => (
                             <label key={source} className="flex items-center">
                               <input
                                 type="checkbox"
                                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                               />
-                              <span className="ml-2 text-sm text-gray-700">{source}</span>
+                              <span className="ml-2 text-sm text-gray-700">
+                                {source}
+                              </span>
                             </label>
                           ))}
                         </div>
                       </div>
 
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-4">Filters</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-4">
+                          Filters
+                        </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Date Range</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Date Range
+                            </label>
                             <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                               <option>Last 30 days</option>
                               <option>Last 90 days</option>
@@ -795,7 +997,9 @@ export default function Reports() {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Department</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Department
+                            </label>
                             <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                               <option>All Departments</option>
                               <option>Engineering</option>
@@ -806,7 +1010,9 @@ export default function Reports() {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Employee Status</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Employee Status
+                            </label>
                             <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                               <option>All Employees</option>
                               <option>Active</option>
@@ -816,7 +1022,9 @@ export default function Reports() {
                           </div>
 
                           <div>
-                            <label className="block text-sm font-medium text-gray-700">Grouping</label>
+                            <label className="block text-sm font-medium text-gray-700">
+                              Grouping
+                            </label>
                             <select className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                               <option>None</option>
                               <option>By Department</option>
@@ -828,7 +1036,9 @@ export default function Reports() {
                       </div>
 
                       <div>
-                        <h4 className="text-md font-medium text-gray-900 mb-4">Metrics</h4>
+                        <h4 className="text-md font-medium text-gray-900 mb-4">
+                          Metrics
+                        </h4>
                         <div className="space-y-3">
                           {[
                             "Employee count",
@@ -838,14 +1048,16 @@ export default function Reports() {
                             "Performance scores",
                             "Turnover rate",
                             "Working hours",
-                            "Cost per employee"
+                            "Cost per employee",
                           ].map((metric, index) => (
                             <label key={index} className="flex items-center">
                               <input
                                 type="checkbox"
                                 className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                               />
-                              <span className="ml-2 text-sm text-gray-700">{metric}</span>
+                              <span className="ml-2 text-sm text-gray-700">
+                                {metric}
+                              </span>
                             </label>
                           ))}
                         </div>
@@ -855,19 +1067,33 @@ export default function Reports() {
 
                   <div>
                     <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                      <h5 className="text-sm font-medium text-gray-900 mb-4">Report Preview</h5>
+                      <h5 className="text-sm font-medium text-gray-900 mb-4">
+                        Report Preview
+                      </h5>
                       <div className="space-y-3">
                         <div className="bg-white p-3 rounded border">
-                          <div className="text-xs text-gray-500 mb-1">Data Sources</div>
-                          <div className="text-sm text-gray-900">Employees, Attendance</div>
+                          <div className="text-xs text-gray-500 mb-1">
+                            Data Sources
+                          </div>
+                          <div className="text-sm text-gray-900">
+                            Employees, Attendance
+                          </div>
                         </div>
                         <div className="bg-white p-3 rounded border">
-                          <div className="text-xs text-gray-500 mb-1">Date Range</div>
-                          <div className="text-sm text-gray-900">Last 30 days</div>
+                          <div className="text-xs text-gray-500 mb-1">
+                            Date Range
+                          </div>
+                          <div className="text-sm text-gray-900">
+                            Last 30 days
+                          </div>
                         </div>
                         <div className="bg-white p-3 rounded border">
-                          <div className="text-xs text-gray-500 mb-1">Metrics</div>
-                          <div className="text-sm text-gray-900">3 selected</div>
+                          <div className="text-xs text-gray-500 mb-1">
+                            Metrics
+                          </div>
+                          <div className="text-sm text-gray-900">
+                            3 selected
+                          </div>
                         </div>
                       </div>
 
@@ -966,7 +1192,9 @@ export default function Reports() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <Activity className="h-5 w-5 text-gray-400 mr-3" />
-                              <div className="text-sm font-medium text-gray-900">{log.action}</div>
+                              <div className="text-sm font-medium text-gray-900">
+                                {log.action}
+                              </div>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -983,10 +1211,12 @@ export default function Reports() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               {getStatusIcon(log.status)}
-                              <span className={cn(
-                                "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                                getStatusColor(log.status)
-                              )}>
+                              <span
+                                className={cn(
+                                  "ml-2 inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                  getStatusColor(log.status),
+                                )}
+                              >
                                 {log.status}
                               </span>
                             </div>
@@ -1005,9 +1235,11 @@ export default function Reports() {
         {showReportBuilder && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowReportBuilder(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowReportBuilder(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -1018,8 +1250,7 @@ export default function Reports() {
                       onClick={() => setShowReportBuilder(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -1034,11 +1265,19 @@ export default function Reports() {
                           className="border border-gray-200 rounded-lg p-4 hover:border-blue-300 transition-colors cursor-pointer"
                         >
                           <div className="flex items-center mb-3">
-                            <Icon className={`h-6 w-6 text-${reportType.color}-600 mr-3`} />
-                            <h4 className="text-md font-medium text-gray-900">{reportType.name}</h4>
+                            <Icon
+                              className={`h-6 w-6 text-${reportType.color}-600 mr-3`}
+                            />
+                            <h4 className="text-md font-medium text-gray-900">
+                              {reportType.name}
+                            </h4>
                           </div>
-                          <p className="text-sm text-gray-600 mb-4">{reportType.description}</p>
-                          <button className={`w-full bg-${reportType.color}-50 text-${reportType.color}-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-${reportType.color}-100`}>
+                          <p className="text-sm text-gray-600 mb-4">
+                            {reportType.description}
+                          </p>
+                          <button
+                            className={`w-full bg-${reportType.color}-50 text-${reportType.color}-700 px-3 py-2 rounded-md text-sm font-medium hover:bg-${reportType.color}-100`}
+                          >
                             Generate Now
                           </button>
                         </div>

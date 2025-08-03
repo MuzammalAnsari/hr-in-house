@@ -133,15 +133,20 @@ export default function Attendance() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [selectedStatus, setSelectedStatus] = useState("All");
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
+  const [selectedDate, setSelectedDate] = useState(
+    new Date().toISOString().split("T")[0],
+  );
   const [showManualEntry, setShowManualEntry] = useState(false);
 
   const filteredAttendance = todayAttendance.filter((record) => {
-    const matchesSearch = record.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         record.employeeId.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesDepartment = selectedDepartment === "All" || record.department === selectedDepartment;
-    const matchesStatus = selectedStatus === "All" || record.status === selectedStatus;
-    
+    const matchesSearch =
+      record.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      record.employeeId.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesDepartment =
+      selectedDepartment === "All" || record.department === selectedDepartment;
+    const matchesStatus =
+      selectedStatus === "All" || record.status === selectedStatus;
+
     return matchesSearch && matchesDepartment && matchesStatus;
   });
 
@@ -152,7 +157,9 @@ export default function Attendance() {
     { id: "settings", name: "Settings", count: null },
   ];
 
-  const attendanceRate = Math.round((attendanceStats.totalPresent / attendanceStats.totalEmployees) * 100);
+  const attendanceRate = Math.round(
+    (attendanceStats.totalPresent / attendanceStats.totalEmployees) * 100,
+  );
 
   return (
     <div className="py-6">
@@ -199,8 +206,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Total Employees</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceStats.totalEmployees}</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Total Employees
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceStats.totalEmployees}
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -215,8 +226,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Present Today</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceStats.totalPresent}</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Present Today
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceStats.totalPresent}
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -231,8 +246,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Absent</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceStats.totalAbsent}</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Absent
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceStats.totalAbsent}
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -247,8 +266,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Late Arrivals</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceStats.lateArrivals}</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Late Arrivals
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceStats.lateArrivals}
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -263,8 +286,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Early Departure</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceStats.earlyDepartures}</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Early Departure
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceStats.earlyDepartures}
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -279,8 +306,12 @@ export default function Attendance() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Attendance Rate</dt>
-                      <dd className="text-lg font-medium text-gray-900">{attendanceRate}%</dd>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Attendance Rate
+                      </dt>
+                      <dd className="text-lg font-medium text-gray-900">
+                        {attendanceRate}%
+                      </dd>
                     </dl>
                   </div>
                 </div>
@@ -301,7 +332,7 @@ export default function Attendance() {
                     "py-2 px-1 border-b-2 font-medium text-sm",
                     selectedTab === tab.id
                       ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   )}
                 >
                   {tab.name}
@@ -413,7 +444,10 @@ export default function Attendance() {
                               <div className="h-10 w-10 flex-shrink-0">
                                 <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
                                   <span className="text-sm font-medium text-blue-600">
-                                    {record.name.split(' ').map(n => n[0]).join('')}
+                                    {record.name
+                                      .split(" ")
+                                      .map((n) => n[0])
+                                      .join("")}
                                   </span>
                                 </div>
                               </div>
@@ -430,13 +464,19 @@ export default function Attendance() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <Clock className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className={cn(
-                                "text-sm",
-                                record.isLate ? "text-red-600 font-medium" : "text-gray-900"
-                              )}>
+                              <span
+                                className={cn(
+                                  "text-sm",
+                                  record.isLate
+                                    ? "text-red-600 font-medium"
+                                    : "text-gray-900",
+                                )}
+                              >
                                 {record.checkIn}
                                 {record.isLate && (
-                                  <span className="ml-1 text-xs text-red-500">(Late)</span>
+                                  <span className="ml-1 text-xs text-red-500">
+                                    (Late)
+                                  </span>
                                 )}
                               </span>
                             </div>
@@ -444,31 +484,39 @@ export default function Attendance() {
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <Clock className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">{record.checkOut}</span>
+                              <span className="text-sm text-gray-900">
+                                {record.checkOut}
+                              </span>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <Timer className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">{record.workingHours}</span>
+                              <span className="text-sm text-gray-900">
+                                {record.workingHours}
+                              </span>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
-                            <span className={cn(
-                              "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
-                              record.status === "Present"
-                                ? "bg-green-100 text-green-800"
-                                : record.status === "Absent"
-                                ? "bg-red-100 text-red-800"
-                                : "bg-yellow-100 text-yellow-800"
-                            )}>
+                            <span
+                              className={cn(
+                                "inline-flex px-2 py-1 text-xs font-semibold rounded-full",
+                                record.status === "Present"
+                                  ? "bg-green-100 text-green-800"
+                                  : record.status === "Absent"
+                                    ? "bg-red-100 text-red-800"
+                                    : "bg-yellow-100 text-yellow-800",
+                              )}
+                            >
                               {record.status}
                             </span>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="flex items-center">
                               <MapPin className="h-4 w-4 text-gray-400 mr-2" />
-                              <span className="text-sm text-gray-900">{record.location}</span>
+                              <span className="text-sm text-gray-900">
+                                {record.location}
+                              </span>
                             </div>
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -494,28 +542,44 @@ export default function Attendance() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Monthly Attendance Summary</h3>
-                
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Monthly Attendance Summary
+                </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                   <div className="bg-blue-50 p-4 rounded-lg">
-                    <div className="text-2xl font-bold text-blue-600">93.5%</div>
-                    <div className="text-sm text-blue-800">Average Attendance</div>
+                    <div className="text-2xl font-bold text-blue-600">
+                      93.5%
+                    </div>
+                    <div className="text-sm text-blue-800">
+                      Average Attendance
+                    </div>
                   </div>
                   <div className="bg-green-50 p-4 rounded-lg">
-                    <div className="text-2xl font-bold text-green-600">4,847</div>
-                    <div className="text-sm text-green-800">Total Present Days</div>
+                    <div className="text-2xl font-bold text-green-600">
+                      4,847
+                    </div>
+                    <div className="text-sm text-green-800">
+                      Total Present Days
+                    </div>
                   </div>
                   <div className="bg-red-50 p-4 rounded-lg">
                     <div className="text-2xl font-bold text-red-600">321</div>
-                    <div className="text-sm text-red-800">Total Absent Days</div>
+                    <div className="text-sm text-red-800">
+                      Total Absent Days
+                    </div>
                   </div>
                   <div className="bg-orange-50 p-4 rounded-lg">
-                    <div className="text-2xl font-bold text-orange-600">156</div>
+                    <div className="text-2xl font-bold text-orange-600">
+                      156
+                    </div>
                     <div className="text-sm text-orange-800">Late Arrivals</div>
                   </div>
                   <div className="bg-purple-50 p-4 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600">89</div>
-                    <div className="text-sm text-purple-800">Early Departures</div>
+                    <div className="text-sm text-purple-800">
+                      Early Departures
+                    </div>
                   </div>
                 </div>
 
@@ -548,7 +612,9 @@ export default function Attendance() {
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
                       {monthlyAttendance.map((day, index) => {
-                        const rate = Math.round((day.present / (day.present + day.absent)) * 100);
+                        const rate = Math.round(
+                          (day.present / (day.present + day.absent)) * 100,
+                        );
                         return (
                           <tr key={index}>
                             <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -588,7 +654,9 @@ export default function Attendance() {
           <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
             <div className="px-4 py-5 sm:p-6">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-lg font-medium text-gray-900">Calendar View & Holidays</h3>
+                <h3 className="text-lg font-medium text-gray-900">
+                  Calendar View & Holidays
+                </h3>
                 <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700">
                   Add Holiday
                 </button>
@@ -596,13 +664,22 @@ export default function Attendance() {
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-md font-medium text-gray-900 mb-4">Upcoming Holidays</h4>
+                  <h4 className="text-md font-medium text-gray-900 mb-4">
+                    Upcoming Holidays
+                  </h4>
                   <div className="space-y-3">
                     {holidays.map((holiday, index) => (
-                      <div key={index} className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                      <div
+                        key={index}
+                        className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200"
+                      >
                         <div>
-                          <div className="text-sm font-medium text-red-800">{holiday.name}</div>
-                          <div className="text-xs text-red-600">{new Date(holiday.date).toLocaleDateString()}</div>
+                          <div className="text-sm font-medium text-red-800">
+                            {holiday.name}
+                          </div>
+                          <div className="text-xs text-red-600">
+                            {new Date(holiday.date).toLocaleDateString()}
+                          </div>
                         </div>
                         <Calendar className="h-5 w-5 text-red-600" />
                       </div>
@@ -611,29 +688,41 @@ export default function Attendance() {
                 </div>
 
                 <div>
-                  <h4 className="text-md font-medium text-gray-900 mb-4">Calendar Configuration</h4>
+                  <h4 className="text-md font-medium text-gray-900 mb-4">
+                    Calendar Configuration
+                  </h4>
                   <div className="space-y-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Working Days</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Working Days
+                      </label>
                       <div className="mt-2 grid grid-cols-7 gap-2">
-                        {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day) => (
-                          <div key={day} className="text-center">
-                            <label className="block text-xs text-gray-500 mb-1">{day}</label>
-                            <input
-                              type="checkbox"
-                              defaultChecked={day !== 'Sat' && day !== 'Sun'}
-                              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                            />
-                          </div>
-                        ))}
+                        {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(
+                          (day) => (
+                            <div key={day} className="text-center">
+                              <label className="block text-xs text-gray-500 mb-1">
+                                {day}
+                              </label>
+                              <input
+                                type="checkbox"
+                                defaultChecked={day !== "Sat" && day !== "Sun"}
+                                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                              />
+                            </div>
+                          ),
+                        )}
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Standard Work Hours</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Standard Work Hours
+                      </label>
                       <div className="mt-2 grid grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs text-gray-500">Start Time</label>
+                          <label className="block text-xs text-gray-500">
+                            Start Time
+                          </label>
                           <input
                             type="time"
                             defaultValue="09:00"
@@ -641,7 +730,9 @@ export default function Attendance() {
                           />
                         </div>
                         <div>
-                          <label className="block text-xs text-gray-500">End Time</label>
+                          <label className="block text-xs text-gray-500">
+                            End Time
+                          </label>
                           <input
                             type="time"
                             defaultValue="18:00"
@@ -652,7 +743,9 @@ export default function Attendance() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-700">Grace Period (minutes)</label>
+                      <label className="block text-sm font-medium text-gray-700">
+                        Grace Period (minutes)
+                      </label>
                       <input
                         type="number"
                         defaultValue="15"
@@ -671,16 +764,24 @@ export default function Attendance() {
           <div className="space-y-6">
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">Attendance Settings</h3>
+                <h3 className="text-lg font-medium text-gray-900 mb-6">
+                  Attendance Settings
+                </h3>
 
                 <div className="space-y-6">
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Biometric Integration</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Biometric Integration
+                    </h4>
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <div className="flex items-center justify-between mb-4">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">Biometric Device Status</div>
-                          <div className="text-xs text-gray-500">Connect biometric device for automatic attendance</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            Biometric Device Status
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Connect biometric device for automatic attendance
+                          </div>
                         </div>
                         <span className="inline-flex px-2 py-1 text-xs font-semibold rounded-full bg-red-100 text-red-800">
                           Disconnected
@@ -693,14 +794,17 @@ export default function Attendance() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">CSV Import Settings</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      CSV Import Settings
+                    </h4>
                     <div className="bg-gray-50 p-4 rounded-lg">
                       <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                           CSV Format Template
                         </label>
                         <div className="text-xs text-gray-600 mb-3">
-                          Expected columns: Employee ID, Date, Check In, Check Out, Status
+                          Expected columns: Employee ID, Date, Check In, Check
+                          Out, Status
                         </div>
                         <button className="bg-white border border-gray-300 px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-50">
                           <FileSpreadsheet className="h-4 w-4 mr-2 inline" />
@@ -711,12 +815,18 @@ export default function Attendance() {
                   </div>
 
                   <div>
-                    <h4 className="text-md font-medium text-gray-900 mb-4">Notification Settings</h4>
+                    <h4 className="text-md font-medium text-gray-900 mb-4">
+                      Notification Settings
+                    </h4>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">Late Arrival Alerts</div>
-                          <div className="text-xs text-gray-500">Send alerts for late arrivals</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            Late Arrival Alerts
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Send alerts for late arrivals
+                          </div>
                         </div>
                         <input
                           type="checkbox"
@@ -726,8 +836,12 @@ export default function Attendance() {
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">Absence Notifications</div>
-                          <div className="text-xs text-gray-500">Notify managers of employee absence</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            Absence Notifications
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Notify managers of employee absence
+                          </div>
                         </div>
                         <input
                           type="checkbox"
@@ -737,8 +851,12 @@ export default function Attendance() {
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
-                          <div className="text-sm font-medium text-gray-900">Daily Reports</div>
-                          <div className="text-xs text-gray-500">Send daily attendance summary</div>
+                          <div className="text-sm font-medium text-gray-900">
+                            Daily Reports
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            Send daily attendance summary
+                          </div>
                         </div>
                         <input
                           type="checkbox"
@@ -757,9 +875,11 @@ export default function Attendance() {
         {showManualEntry && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowManualEntry(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowManualEntry(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -770,8 +890,7 @@ export default function Attendance() {
                       onClick={() => setShowManualEntry(false)}
                       className="text-gray-400 hover:text-gray-500"
                     >
-                      <span className="sr-only">Close</span>
-                      ×
+                      <span className="sr-only">Close</span>×
                     </button>
                   </div>
                 </div>
@@ -796,7 +915,7 @@ export default function Attendance() {
                       </label>
                       <input
                         type="date"
-                        defaultValue={new Date().toISOString().split('T')[0]}
+                        defaultValue={new Date().toISOString().split("T")[0]}
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       />
                     </div>

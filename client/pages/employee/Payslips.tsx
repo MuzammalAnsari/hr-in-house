@@ -96,16 +96,27 @@ export default function EmployeePayslips() {
   ];
 
   const filteredPayslips = payslips.filter((payslip) => {
-    const matchesSearch = payslip.period.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPeriod = selectedPeriod === "all" || 
-      payslip.period.includes(selectedPeriod);
-    
+    const matchesSearch = payslip.period
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    const matchesPeriod =
+      selectedPeriod === "all" || payslip.period.includes(selectedPeriod);
+
     return matchesSearch && matchesPeriod;
   });
 
-  const totalEarningsThisYear = payslips.reduce((sum, payslip) => sum + payslip.grossSalary, 0);
-  const totalDeductionsThisYear = payslips.reduce((sum, payslip) => sum + payslip.deductions, 0);
-  const totalNetThisYear = payslips.reduce((sum, payslip) => sum + payslip.netSalary, 0);
+  const totalEarningsThisYear = payslips.reduce(
+    (sum, payslip) => sum + payslip.grossSalary,
+    0,
+  );
+  const totalDeductionsThisYear = payslips.reduce(
+    (sum, payslip) => sum + payslip.deductions,
+    0,
+  );
+  const totalNetThisYear = payslips.reduce(
+    (sum, payslip) => sum + payslip.netSalary,
+    0,
+  );
 
   return (
     <div className="py-6">
@@ -131,7 +142,9 @@ export default function EmployeePayslips() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Latest Net Salary</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Latest Net Salary
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         ${payslips[0]?.netSalary.toLocaleString()}
                       </dd>
@@ -149,7 +162,9 @@ export default function EmployeePayslips() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">YTD Earnings</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        YTD Earnings
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         ${totalEarningsThisYear.toLocaleString()}
                       </dd>
@@ -167,7 +182,9 @@ export default function EmployeePayslips() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Total Payslips</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Total Payslips
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         {payslips.length}
                       </dd>
@@ -185,7 +202,9 @@ export default function EmployeePayslips() {
                   </div>
                   <div className="ml-5 w-0 flex-1">
                     <dl>
-                      <dt className="text-sm font-medium text-gray-500 truncate">Last Paid</dt>
+                      <dt className="text-sm font-medium text-gray-500 truncate">
+                        Last Paid
+                      </dt>
                       <dd className="text-lg font-medium text-gray-900">
                         {new Date(payslips[0]?.payDate).toLocaleDateString()}
                       </dd>
@@ -209,7 +228,7 @@ export default function EmployeePayslips() {
                     "py-2 px-1 border-b-2 font-medium text-sm",
                     selectedTab === tab.id
                       ? "border-blue-500 text-blue-600"
-                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300"
+                      : "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300",
                   )}
                 >
                   {tab.name}
@@ -355,23 +374,29 @@ export default function EmployeePayslips() {
             {/* Yearly Summary */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-6">2024 Salary Summary</h3>
-                
+                <h3 className="text-lg font-medium text-gray-900 mb-6">
+                  2024 Salary Summary
+                </h3>
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="text-center p-6 bg-green-50 rounded-lg">
                     <div className="text-3xl font-bold text-green-600">
                       ${totalEarningsThisYear.toLocaleString()}
                     </div>
-                    <div className="text-sm text-green-800 mt-1">Total Earnings</div>
+                    <div className="text-sm text-green-800 mt-1">
+                      Total Earnings
+                    </div>
                   </div>
-                  
+
                   <div className="text-center p-6 bg-red-50 rounded-lg">
                     <div className="text-3xl font-bold text-red-600">
                       ${totalDeductionsThisYear.toLocaleString()}
                     </div>
-                    <div className="text-sm text-red-800 mt-1">Total Deductions</div>
+                    <div className="text-sm text-red-800 mt-1">
+                      Total Deductions
+                    </div>
                   </div>
-                  
+
                   <div className="text-center p-6 bg-blue-50 rounded-lg">
                     <div className="text-3xl font-bold text-blue-600">
                       ${totalNetThisYear.toLocaleString()}
@@ -385,8 +410,10 @@ export default function EmployeePayslips() {
             {/* Monthly Breakdown */}
             <div className="bg-white shadow border border-gray-200 rounded-lg overflow-hidden">
               <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Monthly Breakdown</h3>
-                
+                <h3 className="text-lg font-medium text-gray-900 mb-4">
+                  Monthly Breakdown
+                </h3>
+
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
@@ -424,7 +451,10 @@ export default function EmployeePayslips() {
                             ${payslip.netSalary.toLocaleString()}
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            ${Math.round(payslip.deductions * 0.7).toLocaleString()}
+                            $
+                            {Math.round(
+                              payslip.deductions * 0.7,
+                            ).toLocaleString()}
                           </td>
                         </tr>
                       ))}
@@ -440,9 +470,11 @@ export default function EmployeePayslips() {
         {showPayslipDetail && (
           <div className="fixed inset-0 z-50 overflow-y-auto">
             <div className="flex min-h-screen items-center justify-center p-4">
-              <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-                   onClick={() => setShowPayslipDetail(false)} />
-              
+              <div
+                className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+                onClick={() => setShowPayslipDetail(false)}
+              />
+
               <div className="relative bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
                 <div className="px-6 py-4 border-b border-gray-200">
                   <div className="flex items-center justify-between">
@@ -458,8 +490,7 @@ export default function EmployeePayslips() {
                         onClick={() => setShowPayslipDetail(false)}
                         className="text-gray-400 hover:text-gray-500"
                       >
-                        <span className="sr-only">Close</span>
-                        ×
+                        <span className="sr-only">Close</span>×
                       </button>
                     </div>
                   </div>
@@ -470,19 +501,33 @@ export default function EmployeePayslips() {
                   <div className="mb-6 p-4 bg-gray-50 rounded-lg">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <div className="text-sm font-medium text-gray-700">Employee Name</div>
-                        <div className="text-sm text-gray-900">{latestPayslip.employee.name}</div>
+                        <div className="text-sm font-medium text-gray-700">
+                          Employee Name
+                        </div>
+                        <div className="text-sm text-gray-900">
+                          {latestPayslip.employee.name}
+                        </div>
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-gray-700">Employee ID</div>
-                        <div className="text-sm text-gray-900">{latestPayslip.employee.employeeId}</div>
+                        <div className="text-sm font-medium text-gray-700">
+                          Employee ID
+                        </div>
+                        <div className="text-sm text-gray-900">
+                          {latestPayslip.employee.employeeId}
+                        </div>
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-gray-700">Department</div>
-                        <div className="text-sm text-gray-900">{latestPayslip.employee.department}</div>
+                        <div className="text-sm font-medium text-gray-700">
+                          Department
+                        </div>
+                        <div className="text-sm text-gray-900">
+                          {latestPayslip.employee.department}
+                        </div>
                       </div>
                       <div>
-                        <div className="text-sm font-medium text-gray-700">Pay Date</div>
+                        <div className="text-sm font-medium text-gray-700">
+                          Pay Date
+                        </div>
                         <div className="text-sm text-gray-900">
                           {new Date(latestPayslip.payDate).toLocaleDateString()}
                         </div>
@@ -493,43 +538,63 @@ export default function EmployeePayslips() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Earnings */}
                     <div>
-                      <h4 className="text-md font-medium text-gray-900 mb-4">Earnings</h4>
+                      <h4 className="text-md font-medium text-gray-900 mb-4">
+                        Earnings
+                      </h4>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Basic Salary</span>
+                          <span className="text-sm text-gray-600">
+                            Basic Salary
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.earnings.basicSalary.toLocaleString()}
+                            $
+                            {latestPayslip.earnings.basicSalary.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Housing Allowance</span>
+                          <span className="text-sm text-gray-600">
+                            Housing Allowance
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.earnings.housingAllowance.toLocaleString()}
+                            $
+                            {latestPayslip.earnings.housingAllowance.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Transport Allowance</span>
+                          <span className="text-sm text-gray-600">
+                            Transport Allowance
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.earnings.transportAllowance.toLocaleString()}
+                            $
+                            {latestPayslip.earnings.transportAllowance.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Medical Allowance</span>
+                          <span className="text-sm text-gray-600">
+                            Medical Allowance
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.earnings.medicalAllowance.toLocaleString()}
+                            $
+                            {latestPayslip.earnings.medicalAllowance.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Performance Bonus</span>
+                          <span className="text-sm text-gray-600">
+                            Performance Bonus
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.earnings.performanceBonus.toLocaleString()}
+                            $
+                            {latestPayslip.earnings.performanceBonus.toLocaleString()}
                           </span>
                         </div>
                         <div className="border-t pt-3">
                           <div className="flex justify-between font-medium">
-                            <span className="text-sm text-gray-900">Total Earnings</span>
+                            <span className="text-sm text-gray-900">
+                              Total Earnings
+                            </span>
                             <span className="text-sm text-green-600">
-                              ${latestPayslip.summary.totalEarnings.toLocaleString()}
+                              $
+                              {latestPayslip.summary.totalEarnings.toLocaleString()}
                             </span>
                           </div>
                         </div>
@@ -538,31 +603,45 @@ export default function EmployeePayslips() {
 
                     {/* Deductions */}
                     <div>
-                      <h4 className="text-md font-medium text-gray-900 mb-4">Deductions</h4>
+                      <h4 className="text-md font-medium text-gray-900 mb-4">
+                        Deductions
+                      </h4>
                       <div className="space-y-3">
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Income Tax</span>
+                          <span className="text-sm text-gray-600">
+                            Income Tax
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.deductions.incomeTax.toLocaleString()}
+                            $
+                            {latestPayslip.deductions.incomeTax.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Social Security</span>
+                          <span className="text-sm text-gray-600">
+                            Social Security
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.deductions.socialSecurity.toLocaleString()}
+                            $
+                            {latestPayslip.deductions.socialSecurity.toLocaleString()}
                           </span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-gray-600">Insurance</span>
+                          <span className="text-sm text-gray-600">
+                            Insurance
+                          </span>
                           <span className="text-sm font-medium text-gray-900">
-                            ${latestPayslip.deductions.insurance.toLocaleString()}
+                            $
+                            {latestPayslip.deductions.insurance.toLocaleString()}
                           </span>
                         </div>
                         <div className="border-t pt-3">
                           <div className="flex justify-between font-medium">
-                            <span className="text-sm text-gray-900">Total Deductions</span>
+                            <span className="text-sm text-gray-900">
+                              Total Deductions
+                            </span>
                             <span className="text-sm text-red-600">
-                              ${latestPayslip.summary.totalDeductions.toLocaleString()}
+                              $
+                              {latestPayslip.summary.totalDeductions.toLocaleString()}
                             </span>
                           </div>
                         </div>
@@ -573,7 +652,9 @@ export default function EmployeePayslips() {
                   {/* Net Salary */}
                   <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
                     <div className="flex justify-between items-center">
-                      <span className="text-lg font-medium text-green-800">Net Salary</span>
+                      <span className="text-lg font-medium text-green-800">
+                        Net Salary
+                      </span>
                       <span className="text-2xl font-bold text-green-600">
                         ${latestPayslip.summary.netSalary.toLocaleString()}
                       </span>
