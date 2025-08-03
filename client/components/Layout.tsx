@@ -6,7 +6,6 @@ import {
   Calendar,
   DollarSign,
   BarChart3,
-  Settings,
   Bell,
   Search,
   User,
