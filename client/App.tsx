@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/leave" element={<Leave />} />
           <Route path="/payroll" element={<Payroll />} />
           <Route path="/reports" element={<Reports />} />
-          <Route path="/settings" element={<Settings />} />
+
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
