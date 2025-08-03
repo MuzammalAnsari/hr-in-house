@@ -26,7 +26,6 @@ const navigation = [
   { name: "Leave Management", href: "/leave", icon: Calendar },
   { name: "Payroll", href: "/payroll", icon: DollarSign },
   { name: "Reports", href: "/reports", icon: BarChart3 },
-  { name: "Settings", href: "/settings", icon: Settings },
 ];
 
 export function Layout({ children }: LayoutProps) {
